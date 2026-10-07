@@ -1,1154 +1,862 @@
 <!DOCTYPE html>
-<html lang="vi" class="scroll-smooth">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khởi Minh Homestyling - Kiến tạo di sản độc bản</title>
+    <title>Khai Kỷ Nghênh Tân - Bộ Sưu Tập 2025</title>
     
-    <!-- Google Fonts: Mulish -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&subset=vietnamese&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        km: {
-                            bg: '#FAFAF8',
-                            dark: '#1C1B1A',
-                            slate: '#2B2927',
-                            teal: '#A68A64',
-                            accent: '#C4A97D', 
-                            stone: '#7A756C',
-                            gray: '#666666',
-                            muted: '#A39E98',
-                            gold: '#C4A97D',
-                            black: '#0A0A0A',
-                            light: '#EAE8E3',
-                            bronze: '#8C7A61'
+                        brand: {
+                            dark: '#0f0a07',
+                            brown: '#1e140d',
+                            card: '#2a1b12',
+                            gold: '#D4AF37',
+                            'gold-light': '#f3e5ab'
                         }
                     },
                     fontFamily: {
-                        serif: ['"SVN-North Carossela"', 'serif'],
-                        sans: ['"Mulish"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-
     <style>
-        /* Nhúng font SVN-North Carossela */
-        @font-face {
-            font-family: 'SVN-North Carossela';
-            src: url('SVN-North-Carossela.otf') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
+        html { scroll-behavior: smooth; }
+        body { background-color: #0f0a07; color: #f3e5ab; }
+        @keyframes floating {
+            0% { transform: translateY(0px) scale(1.05); }
+            50% { transform: translateY(-15px) scale(1.05); }
+            100% { transform: translateY(0px) scale(1.05); }
         }
-
-        body {
-            background-color: #FAFAF8;
-            color: #1C1B1A;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Mulish', sans-serif;
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
-
-        h1, h2, h3, h4, h5, h6, .font-serif {
-            font-family: 'SVN-North Carossela', serif !important;
-            transition: color 0.5s ease;
-        }
-
-        /* --- STYLES: Animations & Layout --- */
-        .reveal-up { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
-        .reveal-up.active { opacity: 1; transform: translateY(0); }
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-        .delay-400 { transition-delay: 400ms; }
-
-        .service-card { transition: transform 0.4s ease, box-shadow 0.4s ease; }
-        .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1); }
-        .service-card img { transition: transform 0.6s ease; }
-        .service-card:hover img { transform: scale(1.05); }
-
-        .btn-arrow svg { transition: transform 0.3s ease; }
-        .group:hover .btn-arrow svg { transform: translateX(4px); }
-
-        .bg-luxury-interior {
-            background-image: url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        .glass-panel {
-            background: rgba(10, 15, 12, 0.55);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            transition: background-color 0.5s ease, border-color 0.5s ease;
+        .process-img {
+            border-radius: 4px;
         }
         
-        /* Accordion */
-        .accordion-content { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s ease-in-out, opacity 0.4s ease-in-out; opacity: 0; }
-        .accordion-item.active .accordion-content { grid-template-rows: 1fr; opacity: 1; }
-        .accordion-inner { overflow: hidden; }
-        .accordion-icon { transition: transform 0.4s ease, color 0.3s ease; }
-        .accordion-item.active .accordion-icon { transform: rotate(180deg); color: #C4A97D; }
-        .accordion-item.active .accordion-title { color: #ffffff; }
-
-        /* Tabs */
-        .tab-content { display: none; opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-        .tab-content.active { display: grid; opacity: 1; transform: translateY(0); }
-        .tab-btn { position: relative; transition: color 0.3s ease; }
-        .tab-btn::after {
-            content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px;
-            background-color: #A68A64; transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .reveal-up { opacity: 0; transform: translateY(50px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-left { opacity: 0; transform: translateX(-50px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-right { opacity: 0; transform: translateX(50px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-up.in-view, .reveal-left.in-view, .reveal-right.in-view { opacity: 1; transform: translate(0, 0); }
+        #stlViewer {
+            background:
+                radial-gradient(circle at 50% 35%, rgba(212,175,55,.13), transparent 42%),
+                linear-gradient(180deg, rgba(42,27,18,.95), rgba(15,10,7,.98));
         }
-        .tab-btn:hover::after { width: 100%; background-color: #C4A97D; }
-        .tab-btn.active { color: #A68A64; font-weight: 500; }
-        .tab-btn.active::after { width: 100%; background-color: #A68A64; }
-
-        /* Timeline */
-        .timeline-axis { position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background-color: #EAE8E3; transition: background-color 0.5s ease; }
-        @media (min-width: 768px) { .timeline-axis { left: 50%; transform: translateX(-50%); } }
-        
-        .timeline-dot {
-            position: absolute; left: 20px; width: 16px; height: 16px; background-color: #A68A64; border: 4px solid #FAFAF8;
-            transform: translate(-50%, -50%); top: 50%; z-index: 10; border-radius: 50%; transition: border-color 0.5s ease, background-color 0.5s ease;
+        #stlCanvas { width: 100%; height: 100%; min-height: 480px; }
+        #stlCanvas canvas { display: block; width: 100% !important; height: 100% !important; }
+        .stl-control-hint {
+            background: rgba(15,10,7,.72);
+            backdrop-filter: blur(8px);
         }
-        @media (min-width: 768px) { .timeline-dot { left: 50%; } }
-        
-        .img-wrapper { overflow: hidden; border: 1px solid transparent; transition: border-color 0.5s ease; }
-        .img-zoom { transition: transform 0.8s ease; width: 100%; height: 100%; object-fit: cover; }
-        .group:hover .img-zoom { transform: scale(1.05); }
-        .reveal-item { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-        .reveal-item.is-visible { opacity: 1; transform: translateY(0); }
-
-        .img-zoom-wrapper { overflow: hidden; position: relative; border: 1px solid transparent; transition: border-color 0.5s ease; }
-        .hairline-bottom { border-bottom: 1px solid rgba(0, 0, 0, 0.1); transition: border-color 0.5s ease; }
-
-        /* Slider */
-        .slide-content { opacity: 0; visibility: hidden; position: absolute; top: 0; left: 0; width: 100%; transform: translateY(10px); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-        .slide-content.active { opacity: 1; visibility: visible; position: relative; transform: translateY(0); }
-        .nav-btn { transition: opacity 0.3s ease; }
-        .nav-btn:hover { opacity: 0.7; }
-        .nav-btn:active { opacity: 0.5; }
-
-        /* Footer */
-        .image-container { position: relative; overflow: hidden; border: 1px solid transparent; transition: border-color 0.5s ease; }
-        .bg-image { transition: transform 1.5s ease; will-change: transform; }
-        .image-container:hover .bg-image { transform: scale(1.03); }
-
-        /* Ẩn công cụ mặc định của Google Translate */
-        body { top: 0 !important; }
-        .skiptranslate, .goog-te-banner-frame, .goog-tooltip { display: none !important; }
-        .goog-text-highlight { background-color: transparent !important; border: none !important; box-shadow: none !important; }
-
-
-        /* ==============================================================
-           CHẾ ĐỘ MÀU ĐEN (MIDNIGHT COPPER) - ĐỘ TƯƠNG PHẢN CAO
-        ============================================================== */
-        .dark-theme {
-            background-color: #080605 !important; /* Đen sâu thẳm */
-            color: #F8F5F0 !important; /* Chữ tổng thể thành Trắng sứ siêu sáng */
-        }
-        
-        /* Chỉnh nền các section */
-        .dark-theme .bg-km-bg, 
-        .dark-theme .bg-white {
-            background-color: #080605 !important;
-            transition: background-color 0.5s ease;
-        }
-        .dark-theme section:not(.bg-luxury-interior):not(.bg-cover) {
-            background-color: #080605 !important;
-        }
-        
-        /* Header */
-        .dark-theme header {
-            background-color: rgba(8, 6, 5, 0.95) !important;
-            border-bottom-color: rgba(222, 155, 96, 0.2) !important;
-        }
-
-        /* Đổi màu chữ cực kỳ tương phản */
-        .dark-theme .text-km-dark, 
-        .dark-theme .text-gray-900, 
-        .dark-theme .text-km-slate {
-            color: #F8F5F0 !important; /* Trắng sứ nổi bật trên nền đen */
-            transition: color 0.5s ease;
-        }
-        .dark-theme .text-white {
-            color: #FFFFFF !important;
-        }
-        .dark-theme .text-km-teal, 
-        .dark-theme .text-km-accent, 
-        .dark-theme .text-km-gold,
-        .dark-theme .text-km-bronze {
-            color: #DE9B60 !important; /* Đồng Thau rực rỡ */
-            transition: color 0.5s ease;
-        }
-        .dark-theme .text-km-gray, 
-        .dark-theme .text-gray-600, 
-        .dark-theme .text-gray-500, 
-        .dark-theme .text-gray-400,
-        .dark-theme .text-gray-300 {
-            color: #B0A8A0 !important; /* Xám sáng, rất dễ đọc */
-            transition: color 0.5s ease;
-        }
-
-        /* Khối và viền phân cách mờ */
-        .dark-theme .border-gray-200, 
-        .dark-theme .border-km-slate\/10, 
-        .dark-theme .border-km-slate\/20,
-        .dark-theme .hairline-bottom {
-            border-color: rgba(222, 155, 96, 0.2) !important;
-            transition: border-color 0.5s ease;
-        }
-        
-        /* Kính mờ (Glass panel) */
-        .dark-theme .glass-panel {
-            background: rgba(18, 14, 12, 0.8) !important; /* Tối hơn, sâu hơn */
-            border-color: rgba(222, 155, 96, 0.2) !important;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9) !important;
-        }
-        
-        /* Timeline */
-        .dark-theme .timeline-axis { background-color: rgba(222, 155, 96, 0.3) !important; }
-        .dark-theme .timeline-dot { background-color: #080605 !important; border-color: #DE9B60 !important; }
-
-        /* Nút bấm (Buttons) */
-        .dark-theme a.bg-km-dark, 
-        .dark-theme button.bg-km-dark,
-        .dark-theme .bg-km-teal.text-white {
-            background-color: transparent !important;
-            border: 1px solid #DE9B60 !important;
-            color: #DE9B60 !important;
-        }
-        .dark-theme a.bg-km-dark:hover, 
-        .dark-theme button.bg-km-dark:hover,
-        .dark-theme .bg-km-teal.text-white:hover {
-            background-color: #DE9B60 !important;
-            color: #080605 !important;
-        }
-
-        /* Tab và Accordion */
-        .dark-theme .tab-btn.active { color: #DE9B60 !important; }
-        .dark-theme .tab-btn::after { background-color: #DE9B60 !important; }
-        .dark-theme .accordion-item.active .accordion-title { color: #F8F5F0 !important; }
-        .dark-theme .accordion-item.active .accordion-icon { color: #DE9B60 !important; }
-
-        /* Hình ảnh chìm vào nền tối */
-        .dark-theme img:not(.bg-image) {
-            filter: brightness(0.8) contrast(1.1) !important;
-        }
-        /* Viền bo cho ảnh để tách bạch với nền đen */
-        .dark-theme .img-wrapper, .dark-theme .img-zoom-wrapper, .dark-theme .image-container {
-            border-color: rgba(222, 155, 96, 0.15) !important;
-        }
-        .dark-theme .shadow-xl, .dark-theme .shadow-lg {
-            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5) !important;
-        }
-
-        /* Footer */
-        .dark-theme footer.bg-km-dark { background-color: #080605 !important; } 
-        .dark-theme .border-white\/10 { border-color: rgba(222, 155, 96, 0.2) !important; }
-
-        /* Cụm Nút chức năng góc phải */
-        .dark-theme #langBtn, .dark-theme #themeBtn, .dark-theme #scrollTopBtn {
-            background-color: #080605 !important;
-            color: #DE9B60 !important;
-            border-color: #DE9B60 !important;
-        }
-        .dark-theme #langBtn:hover, .dark-theme #themeBtn:hover, .dark-theme #scrollTopBtn:hover {
-            background-color: #DE9B60 !important;
-            color: #080605 !important;
+        @media (max-width: 768px) {
+            #stlCanvas { min-height: 380px; }
         }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-km-teal selection:text-white">
+<body class="font-sans antialiased overflow-x-hidden">
 
-    <!-- CỤM 3 NÚT CHỨC NĂNG Ở GÓC PHẢI DƯỚI MÀN HÌNH -->
-    <div class="fixed bottom-6 right-6 z-[100] flex flex-col gap-3">
-        <!-- Nút Đổi Ngôn Ngữ -->
-        <button onclick="toggleLanguage()" id="langBtn" class="w-12 h-12 flex items-center justify-center bg-km-dark text-white rounded-full shadow-lg hover:bg-[#333333] transition-all duration-300 text-xs font-bold tracking-widest border border-gray-300/30">
-            EN
-        </button>
-        <!-- Nút Sáng/Tối -->
-        <button onclick="toggleTheme()" id="themeBtn" class="w-12 h-12 flex items-center justify-center bg-km-dark text-white rounded-full shadow-lg hover:bg-[#333333] transition-all duration-300 border border-gray-300/30">
-            <!-- Icon Mặt trăng (Sáng) -->
-            <svg id="moonIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-            <!-- Icon Mặt trời (Tối) -->
-            <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-        </button>
-        <!-- Nút Kéo Lên Đầu Trang -->
-        <button onclick="scrollToTop()" id="scrollTopBtn" class="w-12 h-12 flex items-center justify-center bg-km-dark text-white rounded-full shadow-lg hover:bg-[#333333] transition-all duration-500 opacity-0 invisible border border-gray-300/30">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
-        </button>
-    </div>
-
-    <!-- Div ẩn phục vụ Google Translate API -->
-    <div id="google_translate_element" class="hidden"></div>
-
-
-    <!-- 1. Header -->
-    <header class="fixed top-0 w-full z-50 bg-km-bg/95 backdrop-blur-md border-b border-gray-200 py-5 px-6 md:px-12 flex justify-between items-center shadow-sm transition-colors duration-500">
-        <a href="#" class="font-serif tracking-[0.2em] text-km-gold text-lg md:text-xl uppercase cursor-pointer">
-            Khởi Minh Homestyling
-        </a>
-        <nav class="hidden lg:flex items-center gap-8 font-sans text-xs uppercase tracking-widest font-bold text-km-gray">
-            <a href="#homestyling-la-gi" class="hover:text-km-gold transition-colors">Homestyling là gì</a>
-            <a href="#7-buoc-mansion" class="hover:text-km-gold transition-colors">7 Bước Mansion</a>
-            <a href="#vi-sao-chon-chung-toi" class="hover:text-km-gold transition-colors">Vì sao chọn chúng tôi</a>
-            <a href="#tin-tuc" class="hover:text-km-gold transition-colors">Tin tức</a>
-        </nav>
-        <a href="#lien-he" class="px-8 py-3 bg-km-dark text-white text-xs font-bold tracking-widest uppercase hover:bg-[#333333] transition-all duration-300 shadow-md hover:shadow-lg rounded-md">
-            Liên hệ
-        </a>
+    <!-- HEADER / HERO SECTION -->
+    <header class="relative min-h-screen flex items-center pt-20 pb-12 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="DSC09570.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/1e140d/D4AF37?text=Hero+Image';" alt="Tượng linh vật Khai Kỷ Nghênh Tân" class="w-full h-full object-cover animate-[floating_10s_ease-in-out_infinite] origin-center scale-105">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/60 to-transparent"></div>
+            <div class="absolute inset-0 bg-black/20"></div>
+        </div>
+        <div class="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+            <div class="w-full md:w-2/3 lg:w-1/2 flex flex-col justify-center text-left space-y-5">
+                <div class="space-y-1">
+                    <p class="text-brand-gold tracking-[0.25em] text-xs md:text-sm font-semibold uppercase drop-shadow-md">Bộ Sưu Tập</p>
+                    <p class="text-brand-gold tracking-[0.15em] text-sm md:text-lg font-medium uppercase drop-shadow-md">Khai Kỷ Nghênh Tân 2025</p>
+                </div>
+                <h1 class="text-5xl md:text-7xl lg:text-[90px] font-serif text-white font-bold tracking-wide drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] leading-none">
+                    Khai Kỷ <br class="hidden md:block">Nghênh Tân
+                </h1>
+                <div class="w-16 h-[2px] bg-brand-gold mt-4 rounded-full opacity-80 shadow-[0_0_10px_rgba(212,175,55,0.5)]"></div>
+                <p class="text-brand-gold-light/80 text-base md:text-lg max-w-md mt-4 font-light leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                    Tuyệt tác nghệ thuật đúc đồng mạ vàng, biểu tượng vĩnh cửu của sức mạnh, sự thịnh vượng và cội nguồn dân tộc.
+                </p>
+                <div class="pt-8">
+                    <a href="#kham-pha" class="group relative inline-flex items-center justify-center px-10 py-3.5 text-xs font-medium tracking-[0.2em] uppercase text-brand-gold bg-transparent border border-brand-gold/50 rounded-md overflow-hidden transition-all duration-500 hover:border-brand-gold">
+                        <span class="relative z-10 transition-colors duration-500 group-hover:text-brand-dark">Khám Phá Ngay</span>
+                        <div class="absolute inset-0 h-full w-full bg-brand-gold transform scale-y-0 origin-bottom transition-transform duration-500 ease-out group-hover:scale-y-100"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <main class="pt-24">
-
-        <!-- Phần Mở Đầu (Hero Section) -->
-        <section id="hero" class="relative w-full h-[calc(100vh-96px)] flex flex-col justify-end items-center bg-cover bg-center bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');">
-            <div class="absolute inset-0 bg-black/30 z-0 transition-colors duration-500"></div>
-
-            <div class="relative z-10 w-full max-w-[1400px] px-6 md:px-12 pb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-                <div class="text-white drop-shadow-lg">
-                    <p class="font-sans text-2xl md:text-3xl font-light mb-2 tracking-wide">Kiến tạo di sản</p>
-                    <h2 class="font-serif text-6xl md:text-8xl tracking-wide">độc bản</h2>
-                </div>
-                
-                <div>
-                    <a href="#homestyling-la-gi" class="inline-flex items-center gap-3 bg-km-dark/90 backdrop-blur-md border border-km-dark text-white px-8 py-4 text-xs font-bold tracking-widest uppercase hover:bg-[#333333] hover:border-[#333333] transition-all duration-300 rounded-md">
-                        Homestyling là gì? <span>&rarr;</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. Homestyling là gì ? -->
-        <section id="homestyling-la-gi" class="max-w-[1100px] w-full mx-auto py-24 px-4 md:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 md:mb-20 reveal-up">
-                <h1 class="font-serif text-5xl md:text-6xl text-km-dark mb-5 tracking-tight">Homestyling <span class="text-km-teal italic">là gì?</span></h1>
-                <h2 class="font-serif text-3xl md:text-4xl text-km-teal mb-6">Nghệ thuật biến dinh thự thành di sản</h2>
-                <p class="text-km-gray text-base md:text-lg leading-relaxed font-light">
-                    Homestyling không chỉ là thiết kế hay trang trí đơn thuần – đó là nghệ thuật cá nhân hóa không gian sống. Chúng tôi biến dinh thự của bạn thành một di sản độc bản, nơi phản chiếu trọn vẹn phong cách, giá trị và câu chuyện riêng của gia đình bạn.
-                </p>
-            </div>
-
-            <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 mb-16 border-b border-gray-200 pb-4 reveal-up delay-100 transition-colors duration-500">
-                <button class="tab-btn active font-sans text-sm md:text-base tracking-widest uppercase text-gray-400 pb-2 outline-none font-bold" onclick="openTab(event, 'tab-world')">
-                    Trên thế giới
-                </button>
-                <button class="tab-btn font-sans text-sm md:text-base tracking-widest uppercase text-gray-400 pb-2 outline-none font-bold" onclick="openTab(event, 'tab-vn')">
-                    Tại Việt Nam
-                </button>
-                <button class="tab-btn font-sans text-sm md:text-base tracking-widest uppercase text-gray-400 pb-2 outline-none font-bold" onclick="openTab(event, 'tab-km')">
-                    Giải pháp Khởi Minh
-                </button>
-            </div>
-
-            <div class="relative min-h-[500px] reveal-up delay-200">
-                <div id="tab-world" class="tab-content active grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-                    <div class="img-container shadow-xl h-[400px] md:h-[500px] w-full rounded-2xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1000" alt="Biệt thự xa xỉ trên thế giới" class="w-full h-full object-cover">
+    <!-- SECTION 1: Ý NGHĨA PHONG THUỶ -->
+    <section id="kham-pha" class="py-24 relative overflow-hidden bg-[#0f0a07]">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-gold/5 via-transparent to-transparent pointer-events-none"></div>
+        <div class="container mx-auto px-6 md:px-12 lg:px-24 text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-serif text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#fcf6ba] to-[#D4AF37] mb-4 drop-shadow-sm">Sức Mạnh & Ý Nghĩa Phong Thuỷ</h2>
+            <p class="text-brand-gold-light/80 mb-16 max-w-2xl mx-auto font-light leading-relaxed text-sm md:text-base">
+                Linh vật Rắn biểu trưng cho sự khôn ngoan, nhạy bén và khả năng tái sinh mạnh mẽ, mang đến một năm Tân Tỵ 2025 đầy bứt phá và thịnh vượng.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="group relative bg-gradient-to-b from-[#1e140d] to-[#0f0a07] p-8 rounded-2xl border border-brand-gold/10 hover:border-brand-gold/40 transition-all duration-500 hover:-translate-y-2 overflow-hidden shadow-2xl">
+                    <div class="absolute inset-0 bg-brand-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative w-full aspect-[4/3] mx-auto rounded-xl overflow-hidden mb-6 border border-brand-gold/20 group-hover:border-brand-gold/50 shadow-lg group-hover:shadow-[0_0_20px_rgba(212,175,55,0.2)] transition-all duration-500">
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                        <img src="DSC09570.jpg" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1e140d/D4AF37?text=Tri+Tue';" alt="Trí Tuệ & Khôn Ngoan" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out">
                     </div>
-                    <div class="flex flex-col justify-center">
-                        <h3 class="font-serif text-4xl md:text-5xl text-km-dark mb-6 leading-snug">Định hình từ những <br>thị trường xa xỉ</h3>
-                        <p class="text-km-gray leading-relaxed font-light mb-5 text-[17px]">
-                            Tại những thủ phủ xa xỉ như New York, London hay Dubai, Homestylist luôn là <strong class="font-bold text-km-dark">người đầu tiên gia chủ gặp gỡ</strong>. Họ lắng nghe, thấu hiểu mong muốn sâu kín nhất và định hình toàn bộ ý tưởng trước khi bất kỳ kiến trúc sư hay nhà thầu nào can thiệp.
-                        </p>
-                        <p class="text-km-gray leading-relaxed font-light text-[17px]">
-                            Ở đó, Homestylist đóng vai trò như một <strong class="font-bold text-km-dark">cố vấn độc lập</strong> – người bảo vệ tầm nhìn thẩm mỹ và đảm bảo mọi quyết định đều phục vụ lợi ích tối cao của gia chủ.
-                        </p>
-                    </div>
-                </div>
-
-                <div id="tab-vn" class="tab-content grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-                    <div class="img-container shadow-xl h-[400px] md:h-[500px] w-full md:order-2 rounded-2xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1000" alt="Thực trạng nội thất tại Việt Nam" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex flex-col justify-center md:order-1">
-                        <h3 class="font-serif text-4xl md:text-5xl text-km-dark mb-6 leading-snug">Thực trạng <br>tại Việt Nam</h3>
-                        <p class="text-km-gray leading-relaxed font-light mb-5 text-[17px]">
-                            Khái niệm Homestyling thực thụ vẫn còn là một mảnh ghép thiếu vắng. Homestylist thường bị nhầm lẫn với người đi sắp xếp lại không gian hiện hữu ở bước cuối cùng.
-                        </p>
-                        <p class="text-km-gray leading-relaxed font-light text-[17px]">
-                            Ngay cả khi được mời tham gia từ sớm, họ vẫn thiếu đi tiếng nói độc lập, dễ dàng bị chi phối bởi bản vẽ của kiến trúc sư hay danh mục sản phẩm từ các nhà cung cấp nội thất.
-                        </p>
-                    </div>
-                </div>
-
-                <div id="tab-km" class="tab-content grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-                    <div class="img-container shadow-xl h-[400px] md:h-[500px] w-full rounded-2xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1000" alt="Giải pháp Khởi Minh Homestyling" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex flex-col justify-center group">
-                        <h3 class="font-serif text-4xl md:text-5xl text-km-teal mb-6 leading-snug">Khởi Minh kiến tạo <br>sự thay đổi...</h3>
-                        <p class="text-km-dark leading-relaxed font-bold mb-4 italic text-[17px]">
-                            Khởi Minh Homestyling mang đến một mô hình homestyling thực thụ, nơi gia chủ luôn là trung tâm của mọi quyết định.
-                        </p>
-                        <p class="text-km-gray leading-relaxed font-light mb-10 text-[17px]">
-                            Cùng Khởi Minh, quá trình hoàn thiện dinh thự không còn là sự phiền toái hay lo âu. Nó trở thành một hành trình tận hưởng nghệ thuật kiến tạo không gian sống, để mỗi mét vuông đều kể câu chuyện di sản của riêng gia đình bạn.
-                        </p>
-                        <div>
-                            <a href="#" class="inline-flex justify-center items-center gap-3 bg-km-dark text-white px-10 py-4 font-bold tracking-widest text-xs uppercase transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1 hover:bg-[#333333] rounded-md">
-                                Khám phá dịch vụ
-                                <span class="btn-arrow">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. Homestyling dành cho ai ? -->
-        <section class="max-w-[1200px] mx-auto px-6 w-full relative py-20">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
-                <h2 class="text-5xl md:text-6xl font-serif text-km-dark mb-6">
-                    Homestyling <span class="text-km-teal italic font-medium">dành cho ai?</span>
-                </h2>
-                <p class="text-km-gray text-base md:text-lg leading-relaxed font-light">
-                    Homestyling dành cho những gia chủ thượng lưu, những người coi mỗi dinh thự là một di sản không chỉ để ở, mà để kể câu chuyện của chính mình, để lại dấu ấn cho thế hệ sau.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                <div class="group relative h-[420px] md:h-[500px] overflow-hidden shadow-lg reveal-up delay-100 cursor-pointer rounded-2xl">
-                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800" alt="Bạn là ai?" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 z-0">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-0"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30 z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-                    <div class="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-8">
-                        <h3 class="font-serif text-3xl md:text-4xl font-medium tracking-wide text-white transition-transform duration-500 ease-out transform group-hover:-translate-y-2">Bạn là ai?</h3>
-                        <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out">
-                            <div class="overflow-hidden">
-                                <p class="font-sans font-light text-sm md:text-base leading-relaxed text-gray-200 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-150">Một doanh nhân thành đạt, một nhà sưu tầm nghệ thuật, hay một gia chủ muốn xây dựng di sản đầu tiên, hoặc bạn đã từng trả giá đắt với những dinh thự không như kỳ vọng...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group relative h-[420px] md:h-[500px] overflow-hidden shadow-lg reveal-up delay-200 cursor-pointer rounded-2xl">
-                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=800" alt="Điều bạn đang đau đáu?" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 z-0">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-0"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30 z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-                    <div class="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-8">
-                        <h3 class="font-serif text-3xl md:text-4xl font-medium tracking-wide text-white transition-transform duration-500 ease-out transform group-hover:-translate-y-2">Điều bạn đang đau đáu?</h3>
-                        <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out">
-                            <div class="overflow-hidden">
-                                <p class="font-sans font-light text-sm md:text-base leading-relaxed text-gray-200 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-150">Bạn không chắc mình muốn gì hay bạn biết nhưng khó tìm được kiến trúc sư thực sự hiểu bạn? Quá trình thiết kế và thi công đầy phiền toái, tốn kém không cần thiết...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group relative h-[420px] md:h-[500px] overflow-hidden shadow-lg reveal-up delay-300 cursor-pointer rounded-2xl">
-                    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=800" alt="Điều bạn thực sự cần?" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 z-0">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-0"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30 z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-                    <div class="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-8">
-                        <h3 class="font-serif text-3xl md:text-4xl font-medium tracking-wide text-white transition-transform duration-500 ease-out transform group-hover:-translate-y-2">Điều bạn thực sự cần?</h3>
-                        <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out">
-                            <div class="overflow-hidden">
-                                <p class="font-sans font-light text-sm md:text-base leading-relaxed text-gray-200 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-150">Một dinh thự không chỉ đẹp, mà còn là một di sản độc bản. Một hành trình suôn sẻ, nơi mọi quyết định đều được kiểm soát, và mỗi chi tiết đều kể câu chuyện riêng của bạn.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex justify-end reveal-up delay-400 group">
-                <a href="#" class="inline-flex justify-center items-center gap-3 bg-km-dark hover:bg-[#333333] text-white px-10 py-4 font-bold tracking-widest text-xs uppercase transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1 rounded-md">
-                    Homestyling làm gì?
-                    <span class="btn-arrow">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    </span>
-                </a>
-            </div>
-        </section>
-
-        <!-- 4. Homestyling làm gì ? -->
-        <section class="bg-luxury-interior relative min-h-screen flex items-center justify-center py-24 px-4 md:px-8 text-white transition-colors duration-500">
-            <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/90 z-0"></div>
-
-            <div class="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center reveal-up">
-                
-                <div class="text-white space-y-8 lg:pr-8">
-                    <h1 class="font-serif text-5xl md:text-6xl leading-tight font-medium text-white">
-                        Homestyling <span class="text-km-accent italic">làm gì?</span>
-                    </h1>
-                    
-                    <div class="space-y-6 text-gray-300 font-light text-base md:text-lg leading-relaxed">
-                        <p><strong class="text-km-accent font-bold">MANSION</strong> là hành trình 7 bước tinh hoa, được thiết kế để biến dinh thự của bạn thành một di sản độc bản.</p>
-                        <p>Từ ý tưởng đầu tiên cho đến khi vận hành thực tế, chúng tôi đồng hành cùng bạn, đảm bảo mỗi chi tiết đều là một nét chạm hoàn mỹ, phản ánh trọn vẹn phong cách và câu chuyện của gia đình.</p>
-                    </div>
-
-                    <div class="pt-4">
-                        <a href="#" class="inline-flex justify-center items-center gap-2 bg-km-dark hover:bg-[#333333] text-white px-10 py-4 font-bold tracking-widest text-xs uppercase transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1 rounded-md">
-                            Khám phá hành trình Mansion &rarr;
-                        </a>
-                    </div>
-                </div>
-
-                <div class="glass-panel p-6 md:p-10 w-full rounded-2xl transition-colors duration-500">
-                    <div class="space-y-1" id="accordion-container">
-                        <!-- Accordion Items -->
-                        <div class="accordion-item active border-b border-white/10 pb-1">
-                            <button class="w-full py-4 flex items-center justify-between text-left relative focus:outline-none group" onclick="toggleAccordion(this)">
-                                <span class="accordion-title font-sans text-base md:text-[17px] tracking-widest text-gray-300 transition-colors uppercase group-hover:text-white font-bold">
-                                    <span class="text-km-accent">M</span>ANIFEST - BIỂU LỘ
-                                </span>
-                                <svg class="accordion-icon w-5 h-5 text-gray-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                            <div class="accordion-content">
-                                <div class="accordion-inner">
-                                    <p class="pb-6 pr-8 text-gray-400 font-light text-sm md:text-[15px] leading-relaxed">Nhận diện Gia chủ - Thấu hiểu sâu sắc bản ngã và phong cách sống, tạo nền tảng định hướng xuyên suốt cho mọi dự án của gia đình.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item border-b border-white/10 pb-1">
-                            <button class="w-full py-4 flex items-center justify-between text-left relative focus:outline-none group" onclick="toggleAccordion(this)">
-                                <span class="accordion-title font-sans text-base md:text-[17px] tracking-widest text-gray-300 transition-colors uppercase group-hover:text-white font-bold">
-                                    <span class="text-km-accent">A</span>LIGN - HÒA QUYỆN
-                                </span>
-                                <svg class="accordion-icon w-5 h-5 text-gray-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                            <div class="accordion-content">
-                                <div class="accordion-inner">
-                                    <p class="pb-6 pr-8 text-gray-400 font-light text-sm md:text-[15px] leading-relaxed">Nhận diện Dự án - Đồng bộ hóa tầm nhìn, thiết lập bài toán chuẩn mực cho Ban quản lý dự án nhằm đảm bảo tiêu chuẩn khắt khe nhất.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item border-b border-white/10 pb-1">
-                            <button class="w-full py-4 flex items-center justify-between text-left relative focus:outline-none group" onclick="toggleAccordion(this)">
-                                <span class="accordion-title font-sans text-base md:text-[17px] tracking-widest text-gray-300 transition-colors uppercase group-hover:text-white font-bold">
-                                    <span class="text-km-accent">N</span>AVIGATE - DẪN LỐI
-                                </span>
-                                <svg class="accordion-icon w-5 h-5 text-gray-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                            <div class="accordion-content">
-                                <div class="accordion-inner">
-                                    <p class="pb-6 pr-8 text-gray-400 font-light text-sm md:text-[15px] leading-relaxed">Định hướng thiết kế - Vạch ra đường lối thẩm mỹ và công năng độc bản, dẫn dắt quá trình sáng tạo của đơn vị thiết kế.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item border-b border-white/10 pb-1">
-                            <button class="w-full py-4 flex items-center justify-between text-left relative focus:outline-none group" onclick="toggleAccordion(this)">
-                                <span class="accordion-title font-sans text-base md:text-[17px] tracking-widest text-gray-300 transition-colors uppercase group-hover:text-white font-bold">
-                                    <span class="text-km-accent">S</span>CULPT - CHẠM KHẮC
-                                </span>
-                                <svg class="accordion-icon w-5 h-5 text-gray-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                            <div class="accordion-content">
-                                <div class="accordion-inner">
-                                    <p class="pb-6 pr-8 text-gray-400 font-light text-sm md:text-[15px] leading-relaxed">Tối ưu phương án Thiết kế - Tinh chỉnh, gọt giũa và hoàn thiện từng đường nét, biến ý tưởng thành những bản vẽ hoàn mỹ nhất.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item border-b border-white/10 pb-1">
-                            <button class="w-full py-4 flex items-center justify-between text-left relative focus:outline-none group" onclick="toggleAccordion(this)">
-                                <span class="accordion-title font-sans text-base md:text-[17px] tracking-widest text-gray-300 transition-colors uppercase group-hover:text-white font-bold">
-                                    <span class="text-km-accent">I</span>MPRINT - GHI DẤU
-                                </span>
-                                <svg class="accordion-icon w-5 h-5 text-gray-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                            <div class="accordion-content">
-                                <div class="accordion-inner">
-                                    <p class="pb-6 pr-8 text-gray-400 font-light text-sm md:text-[15px] leading-relaxed">Tối ưu phương án Thi công - Giám sát khắt khe, đảm bảo tính nguyên bản và độ tinh xảo được hiện thực hóa trong quá trình xây dựng.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item border-b border-white/10 pb-1">
-                            <button class="w-full py-4 flex items-center justify-between text-left relative focus:outline-none group" onclick="toggleAccordion(this)">
-                                <span class="accordion-title font-sans text-base md:text-[17px] tracking-widest text-gray-300 transition-colors uppercase group-hover:text-white font-bold">
-                                    <span class="text-km-accent">O</span>UTFIT - ĐIỂM TRANG
-                                </span>
-                                <svg class="accordion-icon w-5 h-5 text-gray-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                            <div class="accordion-content">
-                                <div class="accordion-inner">
-                                    <p class="pb-6 pr-8 text-gray-400 font-light text-sm md:text-[15px] leading-relaxed">Tối ưu trải nghiệm - Nâng tầm không gian bằng nghệ thuật sắp đặt nội ngoại thất, khơi dậy xúc cảm trong từng trải nghiệm sống.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item pb-1">
-                            <button class="w-full py-4 flex items-center justify-between text-left relative focus:outline-none group" onclick="toggleAccordion(this)">
-                                <span class="accordion-title font-sans text-base md:text-[17px] tracking-widest text-gray-300 transition-colors uppercase group-hover:text-white font-bold">
-                                    <span class="text-km-accent">N</span>OURISH - BỒI ĐẮP
-                                </span>
-                                <svg class="accordion-icon w-5 h-5 text-gray-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                            <div class="accordion-content">
-                                <div class="accordion-inner">
-                                    <p class="pb-4 pr-8 text-gray-400 font-light text-sm md:text-[15px] leading-relaxed">Tối ưu Vận hành - Đồng hành bảo tồn và không ngừng nâng tầm giá trị di sản qua thời gian.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. 7 Bước Maison -->
-        <section id="7-buoc-mansion" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-20 reveal-item">
-                <span class="font-sans text-sm font-bold tracking-[0.2em] text-km-teal uppercase mb-4 block">Hành trình 7 bước tinh hoa</span>
-                <h2 class="font-serif text-5xl md:text-6xl text-km-dark mb-6 leading-tight">Kiến tạo Di sản</h2>
-                <p class="text-km-gray leading-relaxed text-lg font-light">
-                    Một quy trình đồng hành toàn diện từ những phác thảo ý tưởng đầu tiên cho đến khi dinh thự đi vào vận hành, đảm bảo mọi chi tiết đều là một nét chạm hoàn mỹ.
-                </p>
-            </div>
-
-            <div class="relative">
-                <div class="timeline-axis"></div>
-
-                <!-- GIAI ĐOẠN 1 -->
-                <div class="relative flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-20 items-center mb-24 md:mb-32 group reveal-item pl-10 md:pl-0">
-                    <div class="timeline-dot"></div>
-                    <div class="md:text-right order-2 md:order-1 md:pr-12">
-                        <div class="img-wrapper shadow-2xl h-[300px] md:h-[450px] rounded-2xl overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Khởi nguồn ý tưởng" class="img-zoom">
-                        </div>
-                    </div>
-                    <div class="order-1 md:order-2 md:pl-12">
-                        <span class="font-sans inline-block px-4 py-1.5 border border-km-teal/30 text-xs font-bold tracking-widest text-km-teal mb-5 rounded-md">GIAI ĐOẠN 1</span>
-                        <h3 class="font-serif text-3xl md:text-4xl text-km-dark mb-4">Khởi nguồn ý tưởng</h3>
-                        <div class="font-sans flex flex-wrap gap-2 mb-4">
-                            <span class="bg-white px-3 py-1 shadow-sm text-xs font-bold text-km-teal uppercase rounded-sm"><span class="text-km-accent mr-1">M</span>anifest</span>
-                            <span class="bg-white px-3 py-1 shadow-sm text-xs font-bold text-km-teal uppercase rounded-sm"><span class="text-km-accent mr-1">A</span>lign</span>
-                        </div>
-                        <p class="text-km-gray leading-relaxed font-light text-[15px] md:text-base">Từ những trao đổi sơ khởi (Pre-project) đến bước lập kế hoạch (Project Plan), Khởi Minh thấu hiểu sâu sắc bản ngã của chủ nhân. Chúng tôi nhận diện chuẩn xác nhu cầu gia chủ và định vị dự án, đặt nền móng vững chắc nhất cho một di sản tương lai.</p>
-                    </div>
-                </div>
-
-                <!-- GIAI ĐOẠN 2 -->
-                <div class="relative flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-20 items-center mb-24 md:mb-32 group reveal-item pl-10 md:pl-0">
-                    <div class="timeline-dot"></div>
-                    <div class="order-1 md:order-1 md:text-right md:pr-12">
-                        <span class="font-sans inline-block px-4 py-1.5 border border-km-teal/30 text-xs font-bold tracking-widest text-km-teal mb-5 rounded-md">GIAI ĐOẠN 2</span>
-                        <h3 class="font-serif text-3xl md:text-4xl text-km-dark mb-4">Định hình phong cách</h3>
-                        <div class="font-sans flex flex-wrap md:justify-end gap-2 mb-4">
-                            <span class="bg-white px-3 py-1 shadow-sm text-xs font-bold text-km-teal uppercase rounded-sm"><span class="text-km-accent mr-1">N</span>avigate</span>
-                            <span class="bg-white px-3 py-1 shadow-sm text-xs font-bold text-km-teal uppercase rounded-sm"><span class="text-km-accent mr-1">S</span>culpt</span>
-                        </div>
-                        <p class="text-km-gray leading-relaxed font-light text-[15px] md:text-base">Xuyên suốt quá trình chuẩn bị (Pre-design) và thiết kế công trình (Design), chúng tôi đóng vai trò như một cố vấn độc lập. Định hướng và chạm khắc từng phương án thiết kế để không gian thực sự mang đậm dấu ấn cá nhân và đạt chuẩn mực thẩm mỹ cao nhất.</p>
-                    </div>
-                    <div class="order-2 md:order-2 md:pl-12">
-                        <div class="img-wrapper shadow-2xl h-[300px] md:h-[450px] rounded-2xl overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Định hình phong cách" class="img-zoom">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- GIAI ĐOẠN 3 -->
-                <div class="relative flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-20 items-center mb-24 md:mb-32 group reveal-item pl-10 md:pl-0">
-                    <div class="timeline-dot"></div>
-                    <div class="md:text-right order-2 md:order-1 md:pr-12">
-                        <div class="img-wrapper shadow-2xl h-[300px] md:h-[450px] rounded-2xl overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hiện thực hoá" class="img-zoom">
-                        </div>
-                    </div>
-                    <div class="order-1 md:order-2 md:pl-12">
-                        <span class="font-sans inline-block px-4 py-1.5 border border-km-teal/30 text-xs font-bold tracking-widest text-km-teal mb-5 rounded-md">GIAI ĐOẠN 3</span>
-                        <h3 class="font-serif text-3xl md:text-4xl text-km-dark mb-4">Hiện thực hoá di sản</h3>
-                        <div class="font-sans flex flex-wrap gap-2 mb-4">
-                            <span class="bg-white px-3 py-1 shadow-sm text-xs font-bold text-km-teal uppercase rounded-sm"><span class="text-km-accent mr-1">I</span>mprint</span>
-                            <span class="bg-white px-3 py-1 shadow-sm text-xs font-bold text-km-teal uppercase rounded-sm"><span class="text-km-accent mr-1">O</span>utfit</span>
-                        </div>
-                        <p class="text-km-gray leading-relaxed font-light text-[15px] md:text-base">Quá trình thi công (Build) và trang trí hoàn thiện (Decor). Khởi Minh đồng hành giám sát khắt khe, ghi dấu ấn vào cấu trúc và điểm trang cho toàn bộ nội ngoại thất, tối ưu hóa trải nghiệm sống đến từng centimet.</p>
-                    </div>
-                </div>
-
-                <!-- GIAI ĐOẠN 4 -->
-                <div class="relative flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-20 items-center reveal-item pl-10 md:pl-0">
-                    <div class="timeline-dot"></div>
-                    <div class="order-1 md:order-1 md:text-right md:pr-12">
-                        <span class="font-sans inline-block px-4 py-1.5 border border-km-teal/30 text-xs font-bold tracking-widest text-km-teal mb-5 rounded-md">GIAI ĐOẠN 4</span>
-                        <h3 class="font-serif text-3xl md:text-4xl text-km-dark mb-4">Chuyển giao & Tận hưởng</h3>
-                        <div class="font-sans flex flex-wrap md:justify-end gap-2 mb-4">
-                            <span class="bg-white px-3 py-1 shadow-sm text-xs font-bold text-km-teal uppercase rounded-sm"><span class="text-km-accent mr-1">N</span>ourish</span>
-                        </div>
-                        <p class="text-km-gray leading-relaxed font-light text-[15px] md:text-base">Bước vào giai đoạn vận hành (Stage). Không chỉ dừng lại ở việc trao chìa khoá, Khởi Minh mang đến giải pháp bảo dưỡng và bồi đắp không gian, nâng tầm giá trị dinh thự để nó thực sự trở thành một di sản trường tồn theo thời gian.</p>
-                    </div>
-                    <div class="order-2 md:order-2 md:pl-12">
-                        <div class="img-wrapper shadow-2xl h-[300px] md:h-[450px] rounded-2xl overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chuyển giao và tận hưởng" class="img-zoom">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. Vì sao chọn Khoi Minh Homestyling -->
-        <section id="vi-sao-chon-chung-toi" class="w-full flex flex-col items-center py-28 px-6 sm:px-12 md:px-24">
-            <div class="text-center max-w-4xl mx-auto mb-16 reveal-up">
-                <h2 class="font-serif text-5xl md:text-6xl text-km-slate mb-8 leading-tight font-medium">
-                    Vì sao chọn <span class="italic text-km-teal">Khởi Minh Homestyling?</span>
-                </h2>
-                <h3 class="font-sans text-xs md:text-sm font-bold tracking-[0.4em] text-km-teal uppercase mb-10">
-                    Sự khác biệt đến từ tư duy độc lập
-                </h3>
-                <p class="font-sans text-gray-600 leading-relaxed text-lg font-light max-w-3xl mx-auto">
-                    Là một đơn vị cố vấn homestyling độc lập, không đại diện cho bất kỳ nhà thầu, nhà cung cấp, hay đơn vị thiết kế nào, chúng tôi đặt lợi ích của bạn lên trên hết.
-                </p>
-            </div>
-
-            <div class="w-full max-w-7xl mx-auto border-t border-km-slate/10 mb-20 transition-colors duration-500"></div>
-
-            <div class="w-full max-w-7xl mx-auto mb-28 reveal-up delay-100">
-                <div class="text-center mb-16">
-                    <h4 class="font-sans text-xs font-bold tracking-[0.3em] text-km-slate uppercase">
-                        Hệ sinh thái chuyên gia
-                    </h4>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-16">
-                    <div class="border-t border-km-slate/20 pt-5 transition-colors duration-500">
-                        <h5 class="font-serif text-3xl text-km-slate mb-3">Kiến trúc sư & Stylist</h5>
-                        <p class="font-sans text-xs tracking-widest uppercase text-km-bronze font-bold">Định hình phong cách</p>
-                    </div>
-                    <div class="border-t border-km-slate/20 pt-5 transition-colors duration-500">
-                        <h5 class="font-serif text-3xl text-km-slate mb-3">Tâm lý học Không gian</h5>
-                        <p class="font-sans text-xs tracking-widest uppercase text-km-bronze font-bold">Thấu hiểu sâu sắc</p>
-                    </div>
-                    <div class="border-t border-km-slate/20 pt-5 transition-colors duration-500">
-                        <h5 class="font-serif text-3xl text-km-slate mb-3">Thiết kế Ánh sáng & Âm thanh</h5>
-                        <p class="font-sans text-xs tracking-widest uppercase text-km-bronze font-bold">Đánh thức giác quan</p>
-                    </div>
-                    <div class="border-t border-km-slate/20 pt-5 transition-colors duration-500">
-                        <h5 class="font-serif text-3xl text-km-slate mb-3">Nghệ nhân Thủ công</h5>
-                        <p class="font-sans text-xs tracking-widest uppercase text-km-bronze font-bold">Chế tác độc bản</p>
-                    </div>
-                    <div class="border-t border-km-slate/20 pt-5 transition-colors duration-500">
-                        <h5 class="font-serif text-3xl text-km-slate mb-3">Giám tuyển Nghệ thuật</h5>
-                        <p class="font-sans text-xs tracking-widest uppercase text-km-bronze font-bold">Lựa chọn tinh hoa</p>
-                    </div>
-                    <div class="border-t border-km-slate/20 pt-5 transition-colors duration-500">
-                        <h5 class="font-serif text-3xl text-km-slate mb-3">Stylist Tủ đồ cao cấp</h5>
-                        <p class="font-sans text-xs tracking-widest uppercase text-km-bronze font-bold">Tôn vinh cá nhân</p>
-                    </div>
-                    <div class="border-t border-km-slate/20 pt-5 transition-colors duration-500">
-                        <h5 class="font-serif text-3xl text-km-slate mb-3">Chuyên gia Cảnh quan</h5>
-                        <p class="font-sans text-xs tracking-widest uppercase text-km-bronze font-bold">Hơi thở tự nhiên</p>
-                    </div>
-                    <div class="border-t border-km-slate/20 pt-5 transition-colors duration-500">
-                        <h5 class="font-serif text-3xl text-km-slate mb-3">Chuyên gia Catering</h5>
-                        <p class="font-sans text-xs tracking-widest uppercase text-km-bronze font-bold">Trải nghiệm ẩm thực</p>
-                    </div>
-                    <div class="border-t border-km-slate/20 pt-5 transition-colors duration-500">
-                        <h5 class="font-serif text-3xl text-km-slate mb-3">Thiết kế Trải nghiệm</h5>
-                        <p class="font-sans text-xs tracking-widest uppercase text-km-bronze font-bold">Khoảnh khắc đáng nhớ</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center max-w-3xl mx-auto reveal-up delay-200 group">
-                <p class="font-serif italic text-3xl md:text-4xl text-km-slate mb-14 leading-normal">
-                    "Với chúng tôi, bạn tự do lựa chọn – và chúng tôi đảm bảo mọi quyết định đều đáng giá."
-                </p>
-                
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
-                    <a href="#" class="font-sans w-full sm:w-auto px-10 py-4 bg-km-dark text-white border border-km-dark hover:bg-[#333333] transition-all duration-300 text-xs font-bold tracking-widest uppercase shadow-md hover:shadow-lg hover:-translate-y-1 text-center rounded-md">
-                        Liên hệ ngay
-                    </a>
-                    <a href="#" class="font-sans w-full sm:w-auto px-10 py-4 bg-transparent text-km-dark border border-km-dark hover:bg-km-dark hover:text-white transition-all duration-300 text-xs font-bold tracking-widest uppercase shadow-md hover:shadow-lg hover:-translate-y-1 text-center rounded-md">
-                        Cảm nhận gia chủ
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. Cảm nhận gia chủ -->
-        <section class="relative w-full min-h-screen flex items-center justify-center py-24 bg-cover bg-center bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1506744626753-1fa44df31c7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');">
-            <div class="absolute inset-0 bg-gradient-to-b from-km-dark/90 via-km-dark/80 to-km-dark/95 transition-colors duration-500"></div>
-
-            <div class="relative z-10 w-full max-w-5xl mx-auto px-6 md:px-12 reveal-up">
-                <div class="text-center mb-16">
-                    <h2 class="font-serif text-5xl md:text-6xl text-white mb-6 font-medium tracking-wide">
-                        Cảm nhận <span class="text-km-accent italic">gia chủ</span>
-                    </h2>
-                    <p class="font-sans text-km-gray leading-relaxed text-sm md:text-base font-light max-w-3xl mx-auto">
-                        Dù mới xuất hiện, Khởi Minh Homestyling đã nhanh chóng trở thành một phần không thể thiếu trong hành trình kiến tạo dinh thự của gia chủ. Dưới đây là những câu chuyện từ gia chủ, đối tác đã đồng hành cùng chúng tôi.
+                    <h3 class="text-xl font-serif text-[#f3e5ab] mb-4 tracking-wide group-hover:text-white transition-colors">Trí Tuệ & Khôn Ngoan</h3>
+                    <p class="text-brand-gold-light/60 text-sm leading-relaxed font-light group-hover:text-brand-gold-light/80 transition-colors">
+                        Đại diện cho sự thông tuệ, tĩnh tâm quan sát và đưa ra quyết định sắc bén, giúp gia chủ vượt qua mọi thử thách trên thương trường.
                     </p>
                 </div>
-
-                <div class="glass-panel p-8 md:p-14 mb-16 relative min-h-[400px] flex flex-col justify-center border border-km-gold/20 rounded-2xl transition-colors duration-500">
-                    
-                    <div class="slide-content active" id="slide-0">
-                        <div class="flex justify-center mb-6 text-km-accent">
-                            <svg class="w-6 h-6 mx-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-6 h-6 mx-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-6 h-6 mx-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-6 h-6 mx-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-6 h-6 mx-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        </div>
-                        <blockquote class="text-center font-serif italic text-2xl md:text-4xl leading-relaxed md:leading-snug text-white mb-10 max-w-4xl mx-auto px-4 md:px-12">
-                            "Chúng tôi từng nghĩ mình biết rõ mình muốn gì cho đến khi có 13 phiên bản 3D trong tay mà vẫn không tự tin khởi công. Đó là lúc chúng tôi gặp Khởi Minh Homestyling. Họ không chỉ lắng nghe, mà còn giúp tôi khám phá những điều chúng tôi chưa từng nghĩ tới. Dinh thự của tôi giờ không chỉ là một ngôi nhà dành cho 3 thế hệ, mà là một di sản thực thụ cho các thế hệ sau. Hiện tại, tôi đang hợp tác với Khởi Minh Arts & Crafts để sưu tầm nghệ thuật cho không gian của mình."
-                        </blockquote>
-                        <div class="text-center border-t border-km-gold/30 pt-6 max-w-xs mx-auto">
-                            <p class="font-sans font-bold tracking-widest text-sm uppercase text-white mb-1">Ms. Vân Anh</p>
-                            <p class="font-sans font-light text-xs text-km-accent">Gia chủ Viên Villa</p>
-                        </div>
+                <div class="group relative bg-gradient-to-b from-[#1e140d] to-[#0f0a07] p-8 rounded-2xl border border-brand-gold/10 hover:border-brand-gold/40 transition-all duration-500 hover:-translate-y-2 overflow-hidden shadow-2xl">
+                    <div class="absolute inset-0 bg-brand-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative w-full aspect-[4/3] mx-auto rounded-xl overflow-hidden mb-6 border border-brand-gold/20 group-hover:border-brand-gold/50 shadow-lg group-hover:shadow-[0_0_20px_rgba(212,175,55,0.2)] transition-all duration-500">
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                        <img src="DSC09570.jpg" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1e140d/D4AF37?text=Tai+Loc';" alt="Tài Lộc & Sung Túc" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out">
                     </div>
-
-                    <div class="slide-content" id="slide-1">
-                        <div class="flex justify-center mb-6 text-km-accent">
-                            <svg class="w-6 h-6 mx-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-6 h-6 mx-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-6 h-6 mx-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-6 h-6 mx-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-6 h-6 mx-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        </div>
-                        <blockquote class="text-center font-serif italic text-2xl md:text-4xl leading-relaxed md:leading-snug text-white mb-10 max-w-4xl mx-auto px-4 md:px-12">
-                            "Làm việc với Khởi Minh Homestyling là một trải nghiệm hoàn toàn khác biệt. Họ không cạnh tranh với tôi, mà trở thành cánh tay phải, giúp tôi hiểu rõ gia chủ hơn và đồng hành cùng tôi sáng tạo nên những thiết kế hoàn hảo. Tôi đang tiếp tục hợp tác với họ qua Khởi Minh Brands để quảng bá các dự án của mình."
-                        </blockquote>
-                        <div class="text-center border-t border-km-gold/30 pt-6 max-w-xs mx-auto">
-                            <p class="font-sans font-bold tracking-widest text-sm uppercase text-white mb-1">Ms. Hương Đào</p>
-                            <p class="font-sans font-light text-xs text-km-accent">Phù thủy nội thất, Founder KGM Asia<br>Tư vấn nội thất House of Legacy</p>
-                        </div>
-                    </div>
-
-                    <div class="slide-content" id="slide-2">
-                        <div class="flex justify-center mb-6 text-km-accent">
-                            <svg class="w-6 h-6 mx-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-6 h-6 mx-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-6 h-6 mx-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-6 h-6 mx-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-6 h-6 mx-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        </div>
-                        <blockquote class="text-center font-serif italic text-2xl md:text-4xl leading-relaxed md:leading-snug text-white mb-10 max-w-4xl mx-auto px-4 md:px-12">
-                            "Khởi Minh Homestyling giúp chúng tôi tiết kiệm thời gian và đảm bảo chất lượng ở mức cao nhất. Họ giúp chủ nhà lựa chọn và kiểm định từng chi tiết, từ vật liệu đến tiến độ, khiến công việc của chúng tôi trở nên dễ dàng hơn. Tôi rất mong được hợp tác tiếp với họ trong các dự án khác."
-                        </blockquote>
-                        <div class="text-center border-t border-km-gold/30 pt-6 max-w-xs mx-auto">
-                            <p class="font-sans font-bold tracking-widest text-sm uppercase text-white mb-1">Mr. David Larson</p>
-                            <p class="font-sans font-light text-xs text-km-accent">Tổng thầu thi công Viên Villa<br>Falcon Vietnam</p>
-                        </div>
-                    </div>
-
-                    <button onclick="prevSlide()" class="nav-btn absolute left-4 md:-left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/5 border border-white/20 text-white backdrop-blur-md focus:outline-none z-20 hover:bg-white/20 rounded-full transition-colors duration-500">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                    </button>
-                    
-                    <button onclick="nextSlide()" class="nav-btn absolute right-4 md:-right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/5 border border-white/20 text-white backdrop-blur-md focus:outline-none z-20 hover:bg-white/20 rounded-full transition-colors duration-500">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
-
-                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-                        <button onclick="goToSlide(0)" class="indicator w-2 h-2 bg-km-accent transition-all duration-300 w-4 rounded-full"></button>
-                        <button onclick="goToSlide(1)" class="indicator w-2 h-2 bg-white/30 transition-all duration-300 rounded-full"></button>
-                        <button onclick="goToSlide(2)" class="indicator w-2 h-2 bg-white/30 transition-all duration-300 rounded-full"></button>
-                    </div>
+                    <h3 class="text-xl font-serif text-[#f3e5ab] mb-4 tracking-wide group-hover:text-white transition-colors">Tài Lộc & Sung Túc</h3>
+                    <p class="text-brand-gold-light/60 text-sm leading-relaxed font-light group-hover:text-brand-gold-light/80 transition-colors">
+                        Rắn giữ ngọc hay quấn quanh kim ngân lượng là biểu tượng phong thuỷ kinh điển về khả năng giữ của, thu hút tài lộc dồi dào.
+                    </p>
                 </div>
-
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-8 group">
-                    <a href="#" class="font-sans w-full sm:w-auto px-10 py-4 bg-km-dark text-white hover:bg-[#333333] transition-all duration-300 text-xs font-bold tracking-widest uppercase text-center shadow-md hover:shadow-lg hover:-translate-y-1 rounded-md">
-                        Liên hệ ngay &rarr;
-                    </a>
-                    <a href="#" class="font-sans w-full sm:w-auto px-10 py-4 bg-km-dark text-white hover:bg-[#333333] transition-all duration-300 text-xs font-bold tracking-widest uppercase text-center shadow-md hover:shadow-lg hover:-translate-y-1 rounded-md">
-                        Xem những dinh thự chúng tôi có thể chia sẻ cùng bạn &rarr;
-                    </a>
+                <div class="group relative bg-gradient-to-b from-[#1e140d] to-[#0f0a07] p-8 rounded-2xl border border-brand-gold/10 hover:border-brand-gold/40 transition-all duration-500 hover:-translate-y-2 overflow-hidden shadow-2xl">
+                    <div class="absolute inset-0 bg-brand-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative w-full aspect-[4/3] mx-auto rounded-xl overflow-hidden mb-6 border border-brand-gold/20 group-hover:border-brand-gold/50 shadow-lg group-hover:shadow-[0_0_20px_rgba(212,175,55,0.2)] transition-all duration-500">
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                        <img src="DSC09570.jpg" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1e140d/D4AF37?text=Lot+Xac';" alt="Lột Xác & Thăng Tiến" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out">
+                    </div>
+                    <h3 class="text-xl font-serif text-[#f3e5ab] mb-4 tracking-wide group-hover:text-white transition-colors">Lột Xác & Thăng Tiến</h3>
+                    <p class="text-brand-gold-light/60 text-sm leading-relaxed font-light group-hover:text-brand-gold-light/80 transition-colors">
+                        Đặc tính lột xác của loài Rắn ẩn dụ cho sự rũ bỏ những điều cũ kỹ, liên tục đổi mới để vươn tới những đỉnh cao sự nghiệp.
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 8. Những dinh thự đầu tiên -->
-        <section class="py-24 px-6 md:px-12 max-w-[1400px] mx-auto reveal-up">
-            <div class="text-center mb-20 max-w-3xl mx-auto">
-                <h2 class="font-serif text-5xl md:text-6xl text-km-dark mb-6 tracking-tight">
-                    Những dinh thự <span class="italic text-km-teal">đầu tiên</span> của chúng tôi
-                </h2>
-                <p class="font-light text-km-gray leading-relaxed text-sm md:text-base">
-                    Mỗi dinh thự là một câu chuyện, và chúng tôi tự hào là người kể chuyện.<br>
-                    Dưới đây là những không gian sống mà chúng tôi đã đồng hành kiến tạo cùng gia chủ – mỗi chi tiết đều được chạm khắc với sự tận tâm.
-                </p>
+    <!-- SECTION 2: NGHỆ THUẬT CHẾ TÁC & SẢN PHẨM -->
+    <section class="py-32 bg-brand-dark relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-brand-gold/5 to-transparent pointer-events-none"></div>
+
+        <!-- Banner Ngang Tràn Viền với hiệu ứng mờ 2 bên -->
+        <div class="w-full relative mb-32 group">
+            <div class="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+                <img src="DSC09570.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x600/1e140d/D4AF37?text=Banner';" alt="Nghệ thuật chế tác linh vật" class="w-full h-full object-cover transform transition-transform duration-[3000ms] group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-transparent to-brand-dark opacity-90 z-10 pointer-events-none"></div>
+                <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-brand-dark to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-brand-dark to-transparent z-10 pointer-events-none"></div>
             </div>
+            <div class="absolute -bottom-16 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-brand-gold/10 rounded-[100%] blur-3xl z-0 pointer-events-none"></div>
+        </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-16">
-                <a href="#" class="group block md:mt-12">
-                    <div class="img-zoom-wrapper aspect-[3/4] mb-6 rounded-2xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Viên Villa" class="img-zoom w-full h-full object-cover">
+        <div class="container mx-auto px-6 md:px-12 lg:px-24">
+            
+            <!-- Tinh Hoa Truyền Thống -->
+            <div class="w-full max-w-6xl mx-auto mb-32 relative z-10 text-center">
+                <div class="mb-16 flex flex-col items-center max-w-4xl mx-auto px-4">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="w-16 h-[1px] bg-gradient-to-r from-transparent to-brand-gold/50"></span>
+                        <p class="text-brand-gold font-medium tracking-[0.2em] text-xs uppercase">Nghệ thuật chế tác</p>
+                        <span class="w-16 h-[1px] bg-gradient-to-l from-transparent to-brand-gold/50"></span>
                     </div>
-                    <div class="text-center">
-                        <p class="font-sans text-xs font-bold tracking-widest text-km-gray uppercase mb-2">2023 — 2025</p>
-                        <h3 class="font-serif text-3xl text-km-dark group-hover:text-km-teal transition-colors">Viên Villa</h3>
-                    </div>
-                </a>
-
-                <a href="#" class="group block">
-                    <div class="img-zoom-wrapper aspect-[3/4] md:aspect-[4/5] mb-6 rounded-2xl overflow-hidden shadow-xl">
-                        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="House of Legacy" class="img-zoom w-full h-full object-cover">
-                    </div>
-                    <div class="text-center">
-                        <p class="font-sans text-xs font-bold tracking-widest text-km-gray uppercase mb-2">2024 — 2025</p>
-                        <h3 class="font-serif text-3xl text-km-dark group-hover:text-km-teal transition-colors">House of Legacy</h3>
-                    </div>
-                </a>
-
-                <a href="#" class="group block md:mt-12">
-                    <div class="img-zoom-wrapper aspect-[3/4] mb-6 rounded-2xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Giandi Mansion" class="img-zoom w-full h-full object-cover">
-                    </div>
-                    <div class="text-center">
-                        <p class="font-sans text-xs font-bold tracking-widest text-km-gray uppercase mb-2">2025 — 2026</p>
-                        <h3 class="font-serif text-3xl text-km-dark group-hover:text-km-teal transition-colors">Giandi Mansion</h3>
-                    </div>
-                </a>
-            </div>
-
-            <div class="flex justify-center group">
-                <a href="#" class="font-sans inline-block px-10 py-4 bg-km-dark text-white hover:bg-[#333333] transition-all duration-300 text-xs font-bold tracking-widest uppercase shadow-md hover:shadow-lg hover:-translate-y-1 rounded-md">
-                    Khám phá toàn bộ Di sản &rarr;
-                </a>
-            </div>
-        </section>
-
-        <!-- 9. Tin tức -->
-        <section id="tin-tuc" class="py-24 px-6 md:px-12 max-w-[1400px] mx-auto border-t border-gray-200 reveal-up transition-colors duration-500">
-            <div class="flex items-end justify-between mb-12 hairline-bottom pb-6">
-                <h2 class="font-serif text-5xl md:text-6xl text-km-dark">Tin tức <span class="italic text-km-teal">& Góc nhìn</span></h2>
-                <a href="#" class="font-sans hidden md:inline-block text-sm font-bold tracking-widest uppercase text-km-gray hover:text-km-teal transition-colors">Xem tất cả</a>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-                
-                <article class="lg:col-span-7 group cursor-pointer">
-                    <div class="img-zoom-wrapper aspect-[16/10] md:aspect-[4/3] mb-8 rounded-2xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Không gian thông tầng" class="img-zoom w-full h-full object-cover">
-                    </div>
-                    <div class="flex items-center space-x-4 mb-4">
-                        <span class="text-4xl font-serif text-km-dark">07</span>
-                        <div class="h-px w-8 bg-km-teal"></div>
-                        <span class="font-sans text-sm font-bold tracking-widest uppercase text-km-gray">May 2026</span>
-                    </div>
-                    <h3 class="font-serif text-4xl md:text-5xl text-km-dark mb-4 leading-tight group-hover:text-km-teal transition-colors">
-                        Không gian thông tầng hướng Tây:<br> Biến điểm yếu thành điểm nhấn
+                    <h3 class="text-4xl md:text-5xl lg:text-6xl font-serif text-[#e5d9c5] leading-tight mb-6">
+                        Tinh Hoa Truyền Thống<br class="hidden md:block">
+                        <span class="text-brand-gold italic font-semibold">Dáng Hình Đương Đại</span>
                     </h3>
-                    <p class="text-km-gray font-light leading-relaxed mb-6 max-w-2xl">
-                        Việc xử lý ánh sáng và nhiệt độ cho những không gian thông tầng hướng Tây luôn là một bài toán khó. Cùng Khởi Minh khám phá nghệ thuật điều hướng ánh sáng tự nhiên để tạo ra những kiệt tác thị giác vào mỗi buổi chiều tà.
+                    <p class="text-brand-gold-light/70 leading-[1.8] font-light text-sm md:text-base max-w-2xl mx-auto">
+                        Mỗi đường nét đều được các nghệ nhân đúc đồng trứ danh gọt giũa tỉ mỉ. Khai Kỷ Nghênh Tân biểu trưng cho sự thăng hoa và trỗi dậy mạnh mẽ trong năm 2025.
                     </p>
-                    <span class="font-sans text-xs font-bold tracking-widest uppercase text-km-teal">Đọc tiếp &rarr;</span>
-                </article>
+                </div>
 
-                <div class="lg:col-span-5 flex flex-col gap-10">
-                    <article class="group cursor-pointer flex flex-col md:flex-row gap-6 items-start hairline-bottom pb-10">
-                        <div class="img-zoom-wrapper w-full md:w-48 aspect-video md:aspect-square shrink-0 rounded-xl overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chiếu sáng bể bơi" class="img-zoom w-full h-full object-cover">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 border-t border-brand-gold/20 relative">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-[1px] bg-gradient-to-r from-transparent via-brand-gold to-transparent"></div>
+                    <!-- 3 Core Values -->
+                    <div class="group flex flex-col items-center text-center p-8 rounded-2xl bg-[#1e140d]/60 backdrop-blur-sm border border-brand-gold/10 hover:border-brand-gold/40 hover:bg-[#1e140d]/90 transition-all duration-500 cursor-pointer shadow-lg hover:-translate-y-2">
+                        <div class="mb-6 w-16 h-16 rounded-full bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center group-hover:bg-brand-gold/20 group-hover:scale-110 transition-all duration-500 group-hover:border-brand-gold/50 relative overflow-hidden">
+                            <i class="fa-solid fa-hammer text-brand-gold text-2xl group-hover:text-white transition-colors duration-500 relative z-10"></i>
                         </div>
                         <div>
-                            <div class="flex items-center space-x-3 mb-3">
-                                <span class="text-3xl font-serif text-km-dark">03</span>
-                                <span class="font-sans text-xs font-bold tracking-widest uppercase text-km-gray">May</span>
-                            </div>
-                            <h3 class="font-serif text-2xl text-km-dark leading-snug group-hover:text-km-teal transition-colors mb-2">
-                                Xu hướng mới trong chiếu sáng bể bơi vô cực
-                            </h3>
-                            <p class="text-sm text-km-gray font-light line-clamp-2">Sự kết hợp giữa công nghệ sợi quang học và gạch mosaic phản quang đang tạo ra những chuẩn mực mới.</p>
+                            <h4 class="text-[#f3e5ab] font-serif text-2xl mb-3 tracking-wide group-hover:text-white transition-colors duration-300">Thủ công 100%</h4>
+                            <p class="text-brand-gold-light/60 text-sm font-light group-hover:text-brand-gold-light/85">Chế tác thủ công bởi các nghệ nhân lão luyện, dồn tâm huyết vào từng chi tiết nhỏ.</p>
                         </div>
-                    </article>
-
-                    <article class="group cursor-pointer flex flex-col md:flex-row gap-6 items-start">
-                        <div class="img-zoom-wrapper w-full md:w-48 aspect-video md:aspect-square shrink-0 rounded-xl overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1544457070-4cd773b4d71e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Giám tuyển nghệ thuật" class="img-zoom w-full h-full object-cover">
+                    </div>
+                    <div class="group flex flex-col items-center text-center p-8 rounded-2xl bg-[#1e140d]/60 backdrop-blur-sm border border-brand-gold/10 hover:border-brand-gold/40 hover:bg-[#1e140d]/90 transition-all duration-500 cursor-pointer shadow-lg hover:-translate-y-2">
+                        <div class="mb-6 w-16 h-16 rounded-full bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center group-hover:bg-brand-gold/20 group-hover:scale-110 transition-all duration-500 group-hover:border-brand-gold/50 relative overflow-hidden">
+                            <svg class="w-6 h-6 text-brand-gold group-hover:text-white transition-colors duration-500 relative z-10" fill="currentColor" viewBox="0 0 256 256">
+                                <path d="M239.5,121.73l-45.71-15.35L178.43,60.67a12,12,0,0,0-22.86,0l-15.36,45.71L94.5,121.73a12,12,0,0,0,0,22.86l45.71,15.36,15.36,45.71a12,12,0,0,0,22.86,0l15.36-45.71,45.71-15.36A12,12,0,0,0,239.5,121.73Zm-65.73,34a12,12,0,0,0-7.5,7.5l-12.77,38L140.73,163.2a12,12,0,0,0-7.5-7.5l-38-12.77,38-12.77a12,12,0,0,0,7.5-7.5l12.77-38,12.77,38a12,12,0,0,0,7.5,7.5l38,12.77ZM112,56A8,8,0,0,1,104,64H88V80a8,8,0,0,1-16,0V64H56a8,8,0,0,1,0-16H72V32a8,8,0,0,1,16,0V48H104A8,8,0,0,1,112,56ZM88,176a8,8,0,0,0-8,8v16H64a8,8,0,0,0,0,16H80v16a8,8,0,0,0,16,0V216h16a8,8,0,0,0,0-16H96V184A8,8,0,0,0,88,176Z"></path>
+                            </svg>
                         </div>
                         <div>
-                            <div class="flex items-center space-x-3 mb-3">
-                                <span class="text-3xl font-serif text-km-dark">05</span>
-                                <span class="font-sans text-xs font-bold tracking-widest uppercase text-km-gray">May</span>
-                            </div>
-                            <h3 class="font-serif text-2xl text-km-dark leading-snug group-hover:text-km-teal transition-colors mb-2">
-                                Tại sao bạn cần một Giám tuyển Nghệ thuật riêng?
-                            </h3>
-                            <p class="text-sm text-km-gray font-light line-clamp-2">Một bức tranh đắt tiền chưa chắc đã phù hợp. Nghệ thuật sắp đặt đòi hỏi sự thấu hiểu sâu sắc về kiến trúc và câu chuyện cá nhân.</p>
+                            <h4 class="text-[#f3e5ab] font-serif text-2xl mb-3 tracking-wide group-hover:text-white transition-colors duration-300">Vàng 24K</h4>
+                            <p class="text-brand-gold-light/60 text-sm font-light group-hover:text-brand-gold-light/85">Lớp phủ mạ vàng nguyên chất rực rỡ, mang lại vẻ đẹp quyền quý, vĩnh cửu.</p>
                         </div>
-                    </article>
-
-                    <a href="#" class="font-sans inline-block md:hidden text-center text-sm font-bold tracking-widest uppercase text-km-dark mt-4 border border-gray-200 py-3 hover:bg-[#333333] hover:border-[#333333] hover:text-white transition-colors rounded-md">Xem tất cả bài viết</a>
+                    </div>
+                    <div class="group flex flex-col items-center text-center p-8 rounded-2xl bg-[#1e140d]/60 backdrop-blur-sm border border-brand-gold/10 hover:border-brand-gold/40 hover:bg-[#1e140d]/90 transition-all duration-500 cursor-pointer shadow-lg hover:-translate-y-2">
+                        <div class="mb-6 w-16 h-16 rounded-full bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center group-hover:bg-brand-gold/20 group-hover:scale-110 transition-all duration-500 group-hover:border-brand-gold/50 relative overflow-hidden">
+                            <i class="fa-regular fa-gem text-brand-gold text-2xl group-hover:text-white transition-colors duration-500 relative z-10"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-[#f3e5ab] font-serif text-2xl mb-3 tracking-wide group-hover:text-white transition-colors duration-300">Bản Giới Hạn</h4>
+                            <p class="text-brand-gold-light/60 text-sm font-light group-hover:text-brand-gold-light/85">Phiên bản độc bản được đánh số seri, khẳng định vị thế chủ nhân.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
 
-    </main>
+            <!-- SẢN PHẨM & ĐẶT HÀNG -->
+            <div class="w-full bg-gradient-to-b from-[#1e140d] to-[#0f0a07] rounded-2xl border border-brand-gold/20 shadow-2xl p-8 lg:p-12 flex flex-col lg:flex-row gap-12 relative z-10">
+                
+                <!-- Cột Trái: Ảnh -->
+                <div class="w-full lg:w-1/2 flex flex-col gap-4">
+                    <div class="relative w-full flex-1 min-h-[400px] lg:min-h-0 rounded-xl overflow-hidden border border-brand-gold/10 group">
+                        <div class="absolute inset-0 bg-brand-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+                        <img id="mainProductImage" src="DSC09525.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x600/2a1b12/D4AF37?text=Product+Main';" alt="Chi tiết sản phẩm" class="absolute inset-0 w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-105">
+                    </div>
+                    <div id="stlViewer" class="relative w-full flex-1 min-h-[400px] lg:min-h-0 rounded-xl overflow-hidden border border-brand-gold/20 hidden">
+                        <div id="stlCanvas" class="relative"></div>
+                        <div id="stlLoading" class="absolute inset-0 flex items-center justify-center bg-brand-dark/80 z-20">
+                            <div class="text-center">
+                                <div class="w-10 h-10 border-2 border-brand-gold/30 border-t-brand-gold rounded-full animate-spin mx-auto mb-4"></div>
+                                <p class="text-brand-gold text-xs tracking-[0.18em] uppercase">Đang tải mô hình 3D</p>
+                                <p class="text-brand-gold-light/50 text-[10px] mt-2">Mô hình dung lượng lớn, lần đầu có thể mất vài giây.</p>
+                            </div>
+                        </div>
+                        <div class="stl-control-hint absolute left-3 bottom-3 z-10 rounded-lg border border-brand-gold/15 px-3 py-2 text-[10px] text-brand-gold-light/65">Kéo để xoay · Lăn để zoom · Nhấn đúp để đưa về góc nhìn ban đầu</div>
+                        <div class="absolute right-3 top-3 z-10 rounded-full border border-brand-gold/20 bg-brand-dark/70 px-3 py-1 text-[9px] tracking-[0.16em] uppercase text-brand-gold">3D</div>
+                    </div>
+                    <!-- Thumbnails -->
+                    <div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide shrink-0 mt-4">
+                        <button onclick="changeMainImage('DSC09525.jpg', this)" class="thumbnail-btn flex-shrink-0 w-20 md:w-24 aspect-square rounded-lg overflow-hidden border border-brand-gold opacity-100 transition-all cursor-pointer relative bg-[#231b14]">
+                            <img src="DSC09525.jpg" onerror="this.onerror=null;this.src='https://placehold.co/100x100/2a1b12/D4AF37?text=Thumb+1';" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="changeMainImage('DSC09526.jpg', this)" class="thumbnail-btn flex-shrink-0 w-20 md:w-24 aspect-square rounded-lg overflow-hidden border border-transparent opacity-60 hover:opacity-100 hover:border-brand-gold/50 transition-all cursor-pointer relative bg-[#231b14]">
+                            <img src="DSC09526.jpg" onerror="this.onerror=null;this.src='https://placehold.co/100x100/2a1b12/D4AF37?text=Thumb+2';" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="changeMainImage('DSC09527.jpg', this)" class="thumbnail-btn flex-shrink-0 w-20 md:w-24 aspect-square rounded-lg overflow-hidden border border-transparent opacity-60 hover:opacity-100 hover:border-brand-gold/50 transition-all cursor-pointer relative bg-[#231b14]">
+                            <img src="DSC09527.jpg" onerror="this.onerror=null;this.src='https://placehold.co/100x100/2a1b12/D4AF37?text=Thumb+3';" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="changeMainImage('DSC09528.jpg', this)" class="thumbnail-btn flex-shrink-0 w-20 md:w-24 aspect-square rounded-lg overflow-hidden border border-transparent opacity-60 hover:opacity-100 hover:border-brand-gold/50 transition-all cursor-pointer relative bg-[#231b14]">
+                            <img src="DSC09528.jpg" onerror="this.onerror=null;this.src='https://placehold.co/100x100/2a1b12/D4AF37?text=Thumb+4';" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="changeMainImage('DSC09532.jpg', this)" class="thumbnail-btn flex-shrink-0 w-20 md:w-24 aspect-square rounded-lg overflow-hidden border border-transparent opacity-60 hover:opacity-100 hover:border-brand-gold/50 transition-all cursor-pointer relative bg-[#231b14]">
+                            <img src="DSC09532.jpg" onerror="this.onerror=null;this.src='https://placehold.co/100x100/2a1b12/D4AF37?text=Thumb+5';" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="changeMainImage('DSC09535.jpg', this)" class="thumbnail-btn flex-shrink-0 w-20 md:w-24 aspect-square rounded-lg overflow-hidden border border-transparent opacity-60 hover:opacity-100 hover:border-brand-gold/50 transition-all cursor-pointer relative bg-[#231b14]">
+                            <img src="DSC09535.jpg" onerror="this.onerror=null;this.src='https://placehold.co/100x100/2a1b12/D4AF37?text=Thumb+6';" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="changeMainImage('DSC09529.jpg', this)" class="thumbnail-btn flex-shrink-0 w-20 md:w-24 aspect-square rounded-lg overflow-hidden border border-transparent opacity-60 hover:opacity-100 hover:border-brand-gold/50 transition-all cursor-pointer relative bg-[#231b14]">
+                            <img src="DSC09529.jpg" onerror="this.onerror=null;this.src='https://placehold.co/100x100/2a1b12/D4AF37?text=Thumb+7';" class="w-full h-full object-cover">
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-center lg:justify-start gap-3 mt-2">
+                        <button id="showImagesBtn" type="button" class="px-4 py-2 rounded-md border border-brand-gold bg-brand-gold/10 text-brand-gold text-[10px] uppercase tracking-[0.16em] transition-all duration-300">Hình ảnh</button>
+                        <button id="show3DBtn" type="button" class="px-4 py-2 rounded-md border border-[#4a3b2c] text-[#a6917c] hover:border-brand-gold/60 hover:text-brand-gold text-[10px] uppercase tracking-[0.16em] transition-all duration-300">Xem mô hình 3D</button>
+                    </div>
+                </div>
 
-    <!-- 10. Footer -->
-    <footer id="lien-he" class="bg-km-dark text-white py-12 md:py-20 px-6 max-w-[1400px] mx-auto reveal-up transition-colors duration-500">
-        <div class="mb-10 text-center md:text-left">
-            <h2 class="font-serif tracking-[0.2em] text-km-gold text-lg md:text-xl uppercase">Khởi Minh Homestyling</h2>
+                <!-- Cột Phải: Thông tin -->
+                <div class="w-full lg:w-1/2 flex flex-col justify-between">
+                    <div>
+                        <div class="mb-6 border-b border-[#3a281c] pb-6 transition-all duration-300">
+                            <h4 id="productTitle" class="text-white font-serif text-3xl lg:text-4xl tracking-wide font-medium">Rắn Nghênh Tân</h4>
+                            <p id="productSize" class="text-brand-gold-light/60 text-sm mt-2 font-light">Kích thước: 20 cm</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <p id="productStory" class="text-brand-gold-light/75 text-[13px] leading-relaxed font-light text-justify transition-all duration-300">
+                                Hành trình lột xác huy hoàng của rắn được tái hiện qua Rắn Nghênh Tân. Tác phẩm gửi gắm thông điệp tích cực về những cuộc tái sinh lộng lẫy cùng sự hộ thần linh khí, bảo vệ phúc lành cho gia chủ.
+                            </p>
+                        </div>
+
+                        <div class="space-y-3 mb-8">
+                            <div class="flex items-center justify-between border-b border-white/5 pb-2">
+                                <span class="text-brand-gold-light/60 text-[13px] font-light">Đóng gói</span>
+                                <span class="text-[#dcd0c4] text-[13px] font-light text-right">Hộp, chứng thư độc bản</span>
+                            </div>
+                        </div>
+
+                        <!-- Selector 1: Mẫu Tác Phẩm -->
+                        <div class="mb-6">
+                            <p class="text-brand-gold-light/60 text-[11px] font-light uppercase tracking-[0.15em] mb-3">Mẫu Tác Phẩm</p>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                <label class="cursor-pointer group/model block h-full">
+                                    <input type="radio" name="model" value="nghenhtan" class="peer sr-only" checked>
+                                    <div class="h-full flex items-center justify-center py-3 px-2 bg-transparent border border-[#3a281c] rounded-md text-[#a6917c] text-[13px] text-center font-medium transition-all peer-checked:bg-brand-gold/10 peer-checked:border-brand-gold peer-checked:text-brand-gold">Nghênh Tân</div>
+                                </label>
+                                <label class="cursor-pointer group/model block h-full">
+                                    <input type="radio" name="model" value="nghenhhung" class="peer sr-only">
+                                    <div class="h-full flex items-center justify-center py-3 px-2 bg-transparent border border-[#3a281c] rounded-md text-[#a6917c] text-[13px] text-center font-medium transition-all peer-checked:bg-brand-gold/10 peer-checked:border-brand-gold peer-checked:text-brand-gold">Nghênh Hưng</div>
+                                </label>
+                                <label class="cursor-pointer group/model block h-full">
+                                    <input type="radio" name="model" value="nghenhcat" class="peer sr-only">
+                                    <div class="h-full flex items-center justify-center py-3 px-2 bg-transparent border border-[#3a281c] rounded-md text-[#a6917c] text-[13px] text-center font-medium transition-all peer-checked:bg-brand-gold/10 peer-checked:border-brand-gold peer-checked:text-brand-gold">Nghênh Cát</div>
+                                </label>
+                                <label class="cursor-pointer group/model block h-full">
+                                    <input type="radio" name="model" value="nghenhvien" class="peer sr-only">
+                                    <div class="h-full flex items-center justify-center py-3 px-2 bg-transparent border border-[#3a281c] rounded-md text-[#a6917c] text-[13px] text-center font-medium transition-all peer-checked:bg-brand-gold/10 peer-checked:border-brand-gold peer-checked:text-brand-gold">Nghênh Viên</div>
+                                </label>
+                                <label class="cursor-pointer group/model block h-full">
+                                    <input type="radio" name="model" value="nghenhthinh" class="peer sr-only">
+                                    <div class="h-full flex items-center justify-center py-3 px-2 bg-transparent border border-[#3a281c] rounded-md text-[#a6917c] text-[13px] text-center font-medium transition-all peer-checked:bg-brand-gold/10 peer-checked:border-brand-gold peer-checked:text-brand-gold">Nghênh Thịnh</div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Selector 2: Chất Liệu -->
+                        <div id="materialContainer" class="mb-6 transition-opacity duration-300">
+                            <p class="text-brand-gold-light/60 text-[11px] font-light uppercase tracking-[0.15em] mb-3">Chất Liệu & Hoàn Thiện</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <label class="cursor-pointer group/mat block h-full">
+                                    <input type="radio" name="material" value="sonmai" class="peer sr-only">
+                                    <div class="h-full flex items-center justify-center py-3 px-2 bg-transparent border border-[#3a281c] rounded-md text-[#a6917c] text-[12px] text-center font-medium transition-all peer-checked:bg-brand-gold/10 peer-checked:border-brand-gold peer-checked:text-brand-gold">Cốt đá - Sơn mài</div>
+                                </label>
+                                <label class="cursor-pointer group/mat block h-full">
+                                    <input type="radio" name="material" value="madong" class="peer sr-only">
+                                    <div class="h-full flex items-center justify-center py-3 px-2 bg-transparent border border-[#3a281c] rounded-md text-[#a6917c] text-[12px] text-center font-medium transition-all peer-checked:bg-brand-gold/10 peer-checked:border-brand-gold peer-checked:text-brand-gold">Cốt đồng - Mạ đồng</div>
+                                </label>
+                                <label class="cursor-pointer group/mat block h-full">
+                                    <input type="radio" name="material" value="datvang" class="peer sr-only" checked>
+                                    <div class="h-full flex items-center justify-center py-3 px-2 bg-transparent border border-[#3a281c] rounded-md text-[#a6917c] text-[12px] text-center font-medium transition-all peer-checked:bg-brand-gold/10 peer-checked:border-brand-gold peer-checked:text-brand-gold">Cốt đồng - Dát vàng</div>
+                                </label>
+                                <label class="cursor-pointer group/mat block h-full" id="velamOption">
+                                    <input type="radio" name="material" value="velam" class="peer sr-only">
+                                    <div class="h-full flex flex-col items-center justify-center py-2 px-2 bg-transparent border border-[#3a281c] rounded-md text-[#a6917c] text-[12px] text-center font-medium transition-all peer-checked:bg-brand-gold/10 peer-checked:border-brand-gold peer-checked:text-brand-gold">
+                                        Vẽ Lam
+                                        <span class="text-[9px] font-light mt-0.5 opacity-70">(Mạ bạc đuôi)</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <p id="noteText" class="text-brand-gold-light/40 text-[11px] italic font-light">* Thời gian hoàn thiện dự kiến: Tuần 1, Tháng 1/2025.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Giá & Nút Đặt -->
+                    <div class="mt-4 pt-6 border-t border-brand-gold/10">
+                         <div class="flex justify-between items-end mb-1">
+                             <span class="text-brand-gold-light/60 text-xs font-light uppercase tracking-[0.1em]">Tổng Giá Trị</span>
+                             <p class="text-brand-gold text-3xl lg:text-4xl font-medium font-serif transition-colors duration-300 leading-none" id="productPrice">6.000.000 ₫</p>
+                         </div>
+                         <p id="vatNote" class="text-right text-[#a6917c] text-[10px] mb-4 hidden">(Giá chưa bao gồm VAT 8%)</p>
+
+                         <button class="w-full mt-4 relative overflow-hidden flex items-center justify-center px-10 py-[18px] text-[13px] font-medium tracking-[0.2em] uppercase bg-transparent border border-[#4a3b2c] rounded-md transition-all duration-500 group cursor-pointer hover:shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+                             <div class="absolute inset-0 w-full h-full bg-brand-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out z-0"></div>
+                             <span id="orderBtnText" class="flex items-center gap-3 relative z-10 text-brand-gold group-hover:text-brand-dark transition-colors duration-500">
+                                 <svg class="w-4 h-4 text-brand-gold/80 group-hover:text-brand-dark transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                                 ĐẶT MUA NGAY
+                             </span>
+                         </button>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="image-container w-full h-[500px] md:h-[600px] flex items-center justify-center text-center shadow-2xl rounded-2xl overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Không gian hướng biển" class="bg-image absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
-            <div class="absolute inset-0 bg-black/20"></div>
-            <div class="relative z-10 px-6 flex flex-col items-center">
-                <p class="font-sans font-light text-gray-200 text-base md:text-lg mb-4 tracking-wide max-w-2xl">
-                    Một không gian sống độc bản đang đón chờ.<br class="hidden md:block"> 
-                    Hãy cùng chúng tôi khởi tạo hành trình
+    <!-- SECTION 3: THIẾT KẾ ĐỘC QUYỀN (Dark Theme Synchronized) -->
+    <section class="py-24 bg-[#0f0a07] relative overflow-hidden border-t border-brand-gold/10">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-gold/5 via-transparent to-transparent pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-16 lg:gap-24 max-w-6xl mx-auto">
+                <!-- Cột Ảnh Trái -->
+                <div class="w-full md:w-5/12 reveal-left">
+                    <div class="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-brand-gold/20 group">
+                        <div class="absolute inset-0 bg-brand-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+                        <img src="https://placehold.co/800x1000/1e140d/D4AF37?text=Che+Tac" alt="Quá trình chế tác" class="w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-700 ease-out">
+                    </div>
+                </div>
+                
+                <!-- Cột Nội Dung Phải -->
+                <div class="w-full md:w-7/12 text-center md:text-left reveal-right flex flex-col justify-center">
+                    <div class="inline-flex items-center gap-4 mb-6 mx-auto md:mx-0">
+                        <span class="w-12 h-px bg-brand-gold/50"></span>
+                        <span class="font-sans text-xs tracking-[0.25em] text-brand-gold uppercase font-medium">Giá trị cốt lõi</span>
+                    </div>
+                    <h2 class="text-4xl lg:text-5xl font-serif text-white mb-8 font-medium tracking-wide">Thiết Kế Độc Quyền</h2>
+                    <div class="text-brand-gold-light/80 text-[14px] lg:text-[15px] leading-[2.2] font-light text-justify mb-10 space-y-4">
+                        <p>
+                            <strong class="text-white font-medium font-serif text-lg">Khai Kỷ Nghênh Tân</strong> được tạo hình độc quyền cùng quy trình chế tác chỉn chu và hoàn toàn thủ công. Khởi Minh Gifts cam kết về chất lượng hoàn thiện tinh tế trong từng tác phẩm Quà tặng cao cấp.
+                        </p>
+                        <p>
+                            Đó là sự kết hợp hài hòa giữa triết lý sáng tạo của thương hiệu cùng tâm huyết của tác giả và nhóm nghệ nhân. Mỗi đường nét, mỗi chi tiết vi tế không chỉ thỏa mãn nhãn quan mà còn ghi dấu ấn sâu đậm bởi những giá trị nghệ thuật và nhân văn bền vững ẩn chứa bên trong.
+                        </p>
+                    </div>
+                    
+                    <div class="flex items-center justify-center md:justify-start gap-5 pt-8 border-t border-brand-gold/20">
+                        <div class="w-14 h-14 border border-brand-gold/50 flex items-center justify-center font-serif text-brand-gold text-[11px] flex-col leading-none p-1 text-center bg-brand-brown/40 rounded-sm">
+                            <span class="font-bold">KHỞI</span>
+                            <span class="font-bold mt-0.5">MINH</span>
+                        </div>
+                        <div class="flex flex-col text-left">
+                            <span class="font-sans text-xs tracking-[0.3em] text-white font-bold uppercase">Khoi Minh Gifts</span>
+                            <span class="text-[10px] text-brand-gold/70 tracking-widest uppercase mt-1">Authentic Artcraft</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: QUY TRÌNH SÁNG TẠO & CHẾ TÁC (Dark Theme Synchronized) -->
+    <section class="py-24 relative bg-brand-dark text-brand-gold-light overflow-hidden border-t border-brand-gold/10">
+        <div class="container mx-auto px-4 md:px-8 lg:px-16 relative z-10">
+            
+            <!-- Tiêu đề phần -->
+            <div class="text-center mb-20 flex flex-col items-center reveal-up">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-medium uppercase tracking-wider mb-6 text-white">Quy Trình Sáng Tạo & Chế Tác</h2>
+                <p class="text-[14px] md:text-base font-light leading-relaxed text-brand-gold-light/70 max-w-2xl mx-auto">
+                    Từ ý tưởng phác thảo đến tác phẩm hoàn thiện, mỗi linh vật đều trải qua một hành trình gọt giũa công phu, thấm đẫm mồ hôi và tâm huyết của những đôi bàn tay tài hoa.
                 </p>
-                <h1 class="font-serif text-6xl md:text-8xl text-km-accent tracking-widest mb-6 drop-shadow-lg">
-                    MANSION
-                </h1>
-                <p class="font-sans font-bold tracking-[0.3em] md:tracking-[0.4em] uppercase text-xs md:text-sm text-gray-300">
-                    Kiến tạo di sản độc bản
-                </p>
+            </div>
+
+            <!-- Khung chứa Timeline có đường kẻ dọc chạy xuyên suốt -->
+            <div class="max-w-4xl lg:max-w-5xl mx-auto relative px-2 sm:px-6">
+                <!-- Đường chỉ dọc nối các bước -->
+                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-brand-gold/40 via-brand-gold/20 to-transparent -translate-x-1/2"></div>
+                
+                <!-- BƯỚC 1: TẠO HÌNH -->
+                <div class="flex flex-col md:flex-row items-center justify-between mb-24 md:mb-32 relative reveal-up">
+                    <div class="absolute left-1/2 -translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 rounded-full border-2 border-brand-gold bg-brand-brown flex items-center justify-center font-serif text-base lg:text-lg font-bold text-brand-gold z-10 hidden md:flex shadow-[0_0_15px_rgba(212,175,55,0.3)]">01</div>
+                    
+                    <div class="w-full md:w-1/2 text-center md:text-right mb-8 md:mb-0 md:pr-10 lg:pr-16">
+                        <div class="md:hidden w-10 h-10 rounded-full border border-brand-gold bg-brand-brown flex items-center justify-center font-serif text-sm font-bold text-brand-gold mx-auto mb-4">01</div>
+                        <h3 class="text-2xl font-serif font-bold uppercase mb-4 tracking-wider text-white">Tạo Hình</h3>
+                        <p class="text-[14px] leading-[1.8] font-light text-brand-gold-light/75 max-w-sm mx-auto md:ml-auto md:mr-0">
+                            Khởi đầu bằng đất sét, một chất liệu của tự nhiên mềm dẻo. Dưới bàn tay điêu khắc gia, đất sét vô tri bỗng có hơi thở. Sức hấp dẫn nằm ở nhịp điệu thay đổi của hình khối dương và âm, của đặc và rỗng.
+                        </p>
+                    </div>
+                    
+                    <div class="w-full md:w-1/2 md:pl-10 lg:pl-16">
+                        <div class="grid grid-cols-2 gap-3 max-w-sm mx-auto md:mx-0">
+                            <img src="https://placehold.co/600x600/1e140d/D4AF37?text=Tao+Hinh+1" alt="Tạo hình bằng đất sét 1" class="w-full aspect-square object-cover rounded-lg shadow-lg border border-brand-gold/20 hover:border-brand-gold/55 transition-all duration-500">
+                            <img src="https://placehold.co/600x600/1e140d/D4AF37?text=Tao+Hinh+2" alt="Tạo hình bằng đất sét 2" class="w-full aspect-square object-cover rounded-lg shadow-lg border border-brand-gold/20 hover:border-brand-gold/55 transition-all duration-500">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BƯỚC 2: TẠO KHUÔN -->
+                <div class="flex flex-col md:flex-row-reverse items-center justify-between mb-24 md:mb-32 relative reveal-up">
+                    <div class="absolute left-1/2 -translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 rounded-full border-2 border-brand-gold bg-brand-brown flex items-center justify-center font-serif text-base lg:text-lg font-bold text-brand-gold z-10 hidden md:flex shadow-[0_0_15px_rgba(212,175,55,0.3)]">02</div>
+                    
+                    <div class="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0 md:pl-10 lg:pl-16">
+                        <div class="md:hidden w-10 h-10 rounded-full border border-brand-gold bg-brand-brown flex items-center justify-center font-serif text-sm font-bold text-brand-gold mx-auto mb-4">02</div>
+                        <h3 class="text-2xl font-serif font-bold uppercase mb-4 tracking-wider text-white">Tạo Khuôn</h3>
+                        <p class="text-[14px] leading-[1.8] font-light text-brand-gold-light/75 max-w-sm mx-auto md:mr-auto md:ml-0">
+                            Tác phẩm được hoàn thiện trên đất sét dương bản, sau đó đổ khuôn âm bản để chuyển sang các chất liệu vĩnh cửu như đồng nguyên chất, đảm bảo giữ trọn vẹn từng chi tiết tạo hình nguyên bản.
+                        </p>
+                    </div>
+                    
+                    <div class="w-full md:w-1/2 md:pr-10 lg:pr-16">
+                        <img src="https://placehold.co/800x500/1e140d/D4AF37?text=Tao+Khuon" alt="Quá trình tạo khuôn" class="w-full h-auto object-cover rounded-lg shadow-lg border border-brand-gold/25 hover:border-brand-gold/50 transition-all duration-500 max-w-sm mx-auto md:mx-0 md:ml-auto">
+                    </div>
+                </div>
+
+                <!-- BƯỚC 3: SƠN MÀI -->
+                <div class="flex flex-col md:flex-row items-center justify-between mb-24 md:mb-32 relative reveal-up">
+                    <div class="absolute left-1/2 -translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 rounded-full border-2 border-brand-gold bg-brand-brown flex items-center justify-center font-serif text-base lg:text-lg font-bold text-brand-gold z-10 hidden md:flex shadow-[0_0_15px_rgba(212,175,55,0.3)]">03</div>
+                    
+                    <div class="w-full md:w-1/2 text-center md:text-right mb-8 md:mb-0 md:pr-10 lg:pr-16">
+                        <div class="md:hidden w-10 h-10 rounded-full border border-brand-gold bg-brand-brown flex items-center justify-center font-serif text-sm font-bold text-brand-gold mx-auto mb-4">03</div>
+                        <h3 class="text-2xl font-serif font-bold uppercase mb-4 tracking-wider text-white">Sơn Mài Truyền Thống</h3>
+                        <p class="text-[14px] leading-[1.8] font-light text-brand-gold-light/75 max-w-sm mx-auto md:ml-auto md:mr-0">
+                            Áp dụng kỹ thuật sơn mài truyền thống phức tạp qua hàng chục lớp sơn, mài, đánh bóng. Ngôn ngữ sơn mài thăng hoa cùng tạo hình đương đại tạo nên chiều sâu không gian huyền bí.
+                        </p>
+                    </div>
+                    
+                    <div class="w-full md:w-1/2 md:pl-10 lg:pl-16">
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-sm mx-auto md:mx-0">
+                            <img src="https://placehold.co/400x550/1e140d/D4AF37?text=Son+Mai+1" alt="Chế tác sơn mài 1" class="w-full aspect-[3/4] object-cover rounded shadow-lg border border-brand-gold/20 hover:border-brand-gold/50 transition-all duration-500">
+                            <img src="https://placehold.co/400x550/1e140d/D4AF37?text=Son+Mai+2" alt="Chế tác sơn mài 2" class="w-full aspect-[3/4] object-cover rounded shadow-lg border border-brand-gold/20 hover:border-brand-gold/50 transition-all duration-500">
+                            <img src="https://placehold.co/400x550/1e140d/D4AF37?text=Son+Mai+3" alt="Chế tác sơn mài 3" class="w-full aspect-[3/4] object-cover rounded shadow-lg border border-brand-gold/20 hover:border-brand-gold/50 transition-all duration-500 sm:block hidden">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BƯỚC 4: DÁT VÀNG -->
+                <div class="flex flex-col md:flex-row-reverse items-center justify-between relative reveal-up">
+                    <div class="absolute left-1/2 -translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 rounded-full border-2 border-brand-gold bg-brand-brown flex items-center justify-center font-serif text-base lg:text-lg font-bold text-brand-gold z-10 hidden md:flex shadow-[0_0_15px_rgba(212,175,55,0.3)]">04</div>
+                    
+                    <div class="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0 md:pl-10 lg:pl-16">
+                        <div class="md:hidden w-10 h-10 rounded-full border border-brand-gold bg-brand-brown flex items-center justify-center font-serif text-sm font-bold text-brand-gold mx-auto mb-4">04</div>
+                        <h3 class="text-2xl font-serif font-bold uppercase mb-4 tracking-wider text-white">Mạ Vàng & Hoàn Thiện</h3>
+                        <p class="text-[14px] leading-[1.8] font-light text-brand-gold-light/75 max-w-sm mx-auto md:mr-auto md:ml-0">
+                            Lớp áo choàng rực rỡ cuối cùng được khoác lên bằng kỹ thuật dát vàng lá thủ công hoặc mạ vàng 24K điện phân, mang lại độ sáng bóng sang trọng, bảo vệ tác phẩm trường tồn cùng thời gian.
+                        </p>
+                    </div>
+                    
+                    <div class="w-full md:w-1/2 md:pr-10 lg:pr-16">
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-sm mx-auto md:mx-0 md:ml-auto">
+                            <img src="https://placehold.co/400x550/2a1b12/D4AF37?text=Dat+Vang+1" alt="Kỹ thuật dát vàng 1" class="w-full aspect-[3/4] object-cover rounded shadow-lg border border-brand-gold/30">
+                            <img src="https://placehold.co/400x550/2a1b12/D4AF37?text=Dat+Vang+2" alt="Kỹ thuật dát vàng 2" class="w-full aspect-[3/4] object-cover rounded shadow-lg border border-brand-gold/30">
+                            <img src="https://placehold.co/400x550/2a1b12/D4AF37?text=Dat+Vang+3" alt="Kỹ thuật dát vàng 3" class="w-full aspect-[3/4] object-cover rounded shadow-lg border border-brand-gold/30 sm:block hidden">
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
+    </section>
 
-        <div class="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 text-km-muted text-sm md:text-base font-light border-t border-white/10 pt-12 transition-colors duration-500">
-            <div class="md:col-span-5">
-                <h4 class="font-sans font-bold text-white mb-4 tracking-wider uppercase text-xs">Office</h4>
-                <div class="space-y-3 leading-relaxed">
-                    <p class="hover:text-km-gold transition-colors cursor-default">6 Lê Thánh Tông, Hoàn Kiếm, Hà Nội</p>
-                    <p class="hover:text-km-gold transition-colors cursor-default">L17-11, Tầng 17, Vincom Center,<br> 72 Lê Thánh Tôn, Q.1, TP. HCM</p>
+    <!-- SECTION 5: TÁC GIẢ -->
+    <section class="relative min-h-[90vh] flex items-center py-24 overflow-hidden border-t border-brand-gold/15">
+        <div class="absolute inset-0 z-0">
+            <img src="https://placehold.co/1920x1080/1a120b/000000?text=Anh+Tac+Gia" alt="Nhà điêu khắc Vũ Dũng" class="w-full h-full object-cover grayscale opacity-60 mix-blend-luminosity">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/75 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+            <div class="w-full md:w-3/4 lg:w-1/2">
+                <div class="mb-10 text-center md:text-left">
+                    <p class="text-brand-gold tracking-[0.2em] text-sm uppercase font-medium mb-3">Tác Giả</p>
+                    <h2 class="text-4xl md:text-5xl font-serif text-white uppercase tracking-wider mb-2 drop-shadow-lg">Vũ Dũng</h2>
+                    <p class="text-brand-gold-light/80 text-xl font-serif italic">(1944)</p>
                 </div>
-            </div>
-            <div class="md:col-span-3 lg:col-span-2">
-                <h4 class="font-sans font-bold text-white mb-4 tracking-wider uppercase text-xs">Phone</h4>
-                <a href="tel:+84904662339" class="hover:text-km-gold transition-colors inline-block">0904 662 339</a>
-            </div>
-            <div class="md:col-span-4 lg:col-span-3">
-                <h4 class="font-sans font-bold text-white mb-4 tracking-wider uppercase text-xs">Email</h4>
-                <a href="mailto:homestyling@khoiminhcst.vn" class="hover:text-km-gold transition-colors inline-block break-all">homestyling@khoiminhcst.vn</a>
-            </div>
-            <div class="md:col-span-12 lg:col-span-2">
-                <h4 class="font-sans font-bold text-white mb-4 tracking-wider lg:text-right uppercase text-xs">Social</h4>
-                <div class="flex items-center lg:justify-end space-x-5">
-                    <a href="#" class="text-km-muted hover:text-km-gold transition-colors" aria-label="Facebook">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
-                    </a>
-                    <a href="#" class="text-km-muted hover:text-km-gold transition-colors" aria-label="Instagram">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
-                    </a>
+
+                <div class="text-brand-gold-light/80 text-[13px] md:text-[14px] leading-loose font-light text-justify space-y-6">
+                    <p class="drop-shadow-md">
+                        Nhà điêu khắc - Họa sĩ Vũ Dũng đến với hội họa và điêu khắc từ rất sớm, như có sự sắp đặt của số phận. Với Ông, cái đẹp là nhu cầu tự nhiên của đời sống con người, sáng tạo và thưởng thức cái đẹp chính là cốt lõi của lịch sử văn hóa và văn minh nhân loại. Được đào tạo cơ bản về điêu khắc và say mê hội họa, lại có cơ hội tu nghiệp và sáng tác ở Mỹ và Tây Âu, họa sĩ Vũ Dũng sớm nhận ra sức sáng tạo của người nghệ sỹ nhiều hay ít là nhờ ở ba điều: Trời cho, Vốn sống (Xã hội học) và Tình yêu sự sống.
+                    </p>
+                    <p class="drop-shadow-md">
+                        Lâu nay, chủ đề linh vật được các họa sỹ đặc biệt muốn thử sức, nhưng các tác phẩm nổi bật thuần túy là hội họa, còn các nhà điêu khắc dường như nhường hẳn sân chơi này cho các nghệ nhân dân gian. Kết quả là hầu như chưa hề có tác phẩm về chủ đề này bằng ngôn ngữ điêu khắc hiện đại được ghi nhận trong giới điêu khắc Việt Nam. Sau tiếng vang của các Bộ sưu tập linh vật, từ Trâu vàng Khởi Sinh, Hổ vàng Bình Tân, Gia đình Mèo vàng An Vui,... tác phẩm <strong class="text-white font-medium">Khai Kỷ Nghênh Tân</strong> lại tiếp tục ghi dấu ấn với ngôn ngữ điêu khắc hiện đại khác xa lối diễn khối hoàn toàn lệ thực kiểu dân gian vẫn phổ biến lâu nay. Lối sáng tạo khối hình mang tính khái quát gợi mở sự liên tưởng của người thưởng thức nhận biết được cảm xúc của người nghệ sỹ về tình yêu và sức sống, về sức mạnh và nét uyển chuyển, về những điều tốt đẹp sẽ đến từ tâm.
+                    </p>
                 </div>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <!-- SCRIPT TỔNG HỢP -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'vi', 
-                includedLanguages: 'en,vi', 
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    <!-- JS Logic -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.15 };
+        const khoiMinhData = {
+            'nghenhtan': {
+                title: 'Rắn Nghênh Tân',
+                size: '20 cm',
+                story: 'Hành trình lột xác huy hoàng của rắn được tái hiện qua Rắn Nghênh Tân với hai phiên bản hoàn thiện là dát vàng hoặc vẽ lam thủ công mạ bạc đuôi. Rắn Nghênh Tân gửi gắm thông điệp tích cực về những cuộc tái sinh lộng lẫy cùng sự hộ thần linh khí, bảo vệ phúc lành cho gia chủ.',
+                note: '* Thời gian hoàn thiện dự kiến: Tuần 1, Tháng 1/2025.',
+                prices: { 'sonmai': '1.600.000 ₫', 'madong': '3.800.000 ₫', 'datvang': '6.000.000 ₫', 'velam': '6.200.000 ₫' },
+                specialNoteVelam: '* Khởi Minh chỉ nhận sản xuất khi có đơn đặt hàng riêng. Thời gian dự kiến: 1 tháng.'
+            },
+            'nghenhhung': {
+                title: 'Rắn Nghênh Hưng',
+                size: '20 x 16.5 cm (dài x cao)',
+                story: 'Được thiết kế với ngoại hình mạnh mẽ, tư thế kiên quyết, Rắn Nghênh Hưng sẵn sàng hành động để bảo vệ nội lực của chủ nhân, sự hưng thịnh gia đạo. Với phiên bản dát vàng 24k sang trọng, Rắn Nghênh Hưng không chỉ là một tác phẩm nghệ thuật giàu linh khí mà còn tượng trưng cho một vị Hộ Pháp.',
+                note: '* Thời gian hoàn thiện dự kiến: Tuần 1, Tháng 1/2025.',
+                prices: { 'sonmai': '2.000.000 ₫', 'madong': '6.800.000 ₫', 'datvang': '9.900.000 ₫', 'velam': null }
+            },
+            'nghenhcat': {
+                title: 'Rắn Nghênh Cát',
+                size: '30 cm',
+                story: 'Lấy cảm hứng từ Kết cát tường hay nút thắt vô tận hình chữ Vạn, biểu trưng cho trí tuệ và lòng từ bi, sự liên tục của Thập nhị nhân duyên, nền tảng của thực tại luân hồi, Rắn Nghênh Cát chính là một biểu đồ may mắn, gửi gắm vô vàn lời chúc an cát phúc thiện đến người được nhận.',
+                note: '* Phù hợp: Khách hàng Doanh nghiệp đặt số lượng lớn, khách sưu tầm.',
+                b2bOnly: true
+            },
+            'nghenhvien': {
+                title: 'Rắn Nghênh Viên',
+                size: 'Tuỳ chỉnh',
+                story: 'Xuất hiện trong khung cảnh bình dị thân thuộc như phiến lá sen sau cơn mưa, Rắn Nghênh Viên mang tặng hạt "Ngọc lộ" tượng trưng cho những điều trân quý. Tổng thể thiết kế tròn đầy ẩn chứa ý niệm viên mãn an yên cũng là giá trị mà Rắn Nghênh Viên bảo vệ.',
+                note: '* Phù hợp: Khách hàng Doanh nghiệp đặt số lượng lớn, khách sưu tầm.',
+                b2bOnly: true
+            },
+            'nghenhthinh': {
+                title: 'Rắn Nghênh Thịnh',
+                size: 'Tuỳ chỉnh',
+                story: 'Rắn Nghênh Thịnh ôm lấy ngọn lửa đam mê cùng sức sống mãnh liệt bên trong mỗi người để bảo vệ và chở che. Bởi mỗi cá thể là chìa khoá duy nhất tìm thấy sự hưng thịnh cho cuộc sống của mình, giữ được lửa lòng, nhất định sẽ tìm thấy thành toại nguyện ý.',
+                note: '* Phù hợp: Khách hàng Doanh nghiệp đặt số lượng lớn, khách sưu tầm.',
+                b2bOnly: true
+            }
+        };
+
+        const modelInputs = document.querySelectorAll('input[name="model"]');
+        const materialInputs = document.querySelectorAll('input[name="material"]');
+        const titleEl = document.getElementById('productTitle');
+        const sizeEl = document.getElementById('productSize');
+        const storyEl = document.getElementById('productStory');
+        const noteEl = document.getElementById('noteText');
+        const priceEl = document.getElementById('productPrice');
+        const vatNoteEl = document.getElementById('vatNote');
+        const materialContainer = document.getElementById('materialContainer');
+        const orderBtnText = document.getElementById('orderBtnText');
+        const velamOption = document.getElementById('velamOption');
+
+        function updateProductDisplay() {
+            const selectedModel = document.querySelector('input[name="model"]:checked').value;
+            const selectedMaterial = document.querySelector('input[name="material"]:checked')?.value;
+            const data = khoiMinhData[selectedModel];
+            
+            [titleEl, sizeEl, storyEl, priceEl].forEach(el => el.style.opacity = '0');
+
+            setTimeout(() => {
+                titleEl.innerText = data.title;
+                sizeEl.innerText = `Kích thước: ${data.size}`;
+                storyEl.innerText = data.story;
+                noteEl.innerText = data.note;
+
+                if(selectedModel === 'nghenhtan') {
+                    velamOption.style.display = 'block';
+                } else {
+                    velamOption.style.display = 'none';
+                    if(selectedMaterial === 'velam') {
+                        document.querySelector('input[value="datvang"]').checked = true;
+                    }
+                }
+
+                if (data.b2bOnly) {
+                    materialContainer.style.opacity = '0.3';
+                    materialContainer.style.pointerEvents = 'none';
+                    priceEl.innerText = "Liên Hệ Tư Vấn";
+                    vatNoteEl.classList.add('hidden');
+                    orderBtnText.innerHTML = "NHẬN BÁO GIÁ DOANH NGHIỆP";
+                } else {
+                    materialContainer.style.opacity = '1';
+                    materialContainer.style.pointerEvents = 'auto';
+                    orderBtnText.innerHTML = `<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg> ĐẶT MUA NGAY`;
+                    
+                    const activeMaterial = document.querySelector('input[name="material"]:checked').value;
+                    if (data.prices[activeMaterial]) {
+                        priceEl.innerText = data.prices[activeMaterial];
+                        if (activeMaterial === 'velam') {
+                            vatNoteEl.classList.remove('hidden');
+                            if(data.specialNoteVelam) noteEl.innerText = data.specialNoteVelam;
+                        } else {
+                            vatNoteEl.classList.add('hidden');
+                        }
+                    }
+                }
+
+                [titleEl, sizeEl, storyEl, priceEl].forEach(el => el.style.opacity = '1');
+            }, 200);
+        }
+
+        modelInputs.forEach(input => input.addEventListener('change', updateProductDisplay));
+        materialInputs.forEach(input => input.addEventListener('change', updateProductDisplay));
+
+        function changeMainImage(src, buttonElement) {
+            const mainImg = document.getElementById('mainProductImage');
+            mainImg.style.opacity = '0.5';
+            setTimeout(() => {
+                mainImg.src = src;
+                mainImg.style.opacity = '1';
+            }, 150);
+
+            const thumbnails = document.querySelectorAll('.thumbnail-btn');
+            thumbnails.forEach(btn => {
+                btn.classList.remove('border-brand-gold', 'opacity-100');
+                btn.classList.add('border-transparent', 'opacity-60');
+            });
+            buttonElement.classList.remove('border-transparent', 'opacity-60');
+            buttonElement.classList.add('border-brand-gold', 'opacity-100');
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('active', 'is-visible');
-                        observer.unobserve(entry.target);
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target); 
                     }
                 });
             }, observerOptions);
 
-            const revealElements = document.querySelectorAll('.reveal-up, .reveal-item');
-            setTimeout(() => { revealElements.forEach(el => observer.observe(el)); }, 100);
+            const animatedElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
 
-            const firstAccordionItem = document.querySelector('.accordion-item');
-            if (firstAccordionItem) firstAccordionItem.classList.add('active');
+    <!-- 3D viewer: load the STL only when the user opens the 3D tab. -->
+    <!-- Three.js example modules use the bare module name "three", so we map it explicitly. -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module">
+        import * as THREE from 'three';
+        import { STLLoader } from 'three/addons/loaders/STLLoader.js';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-            window.openTab = function(evt, tabId) {
-                var tabContents = document.getElementsByClassName("tab-content");
-                for (var i = 0; i < tabContents.length; i++) tabContents[i].classList.remove("active");
-                var tabBtns = document.getElementsByClassName("tab-btn");
-                for (var i = 0; i < tabBtns.length; i++) tabBtns[i].classList.remove("active");
-                var selectedTab = document.getElementById(tabId);
-                setTimeout(() => { selectedTab.classList.add("active"); }, 10);
-                evt.currentTarget.classList.add("active");
+        const stlViewer = document.getElementById('stlViewer');
+        const stlCanvas = document.getElementById('stlCanvas');
+        const stlLoading = document.getElementById('stlLoading');
+        const showImagesBtn = document.getElementById('showImagesBtn');
+        const show3DBtn = document.getElementById('show3DBtn');
+        const mainImageWrap = document.getElementById('mainProductImage')?.parentElement;
+
+        let renderer, scene, camera, controls, model;
+        let animationFrame;
+        let initialized = false;
+        let baseCameraPosition;
+
+        function updateTabStyles(show3D) {
+            const active = ['border-brand-gold', 'bg-brand-gold/10', 'text-brand-gold'];
+            const inactive = ['border-[#4a3b2c]', 'text-[#a6917c]'];
+            const setActive = (btn, yes) => {
+                active.forEach(c => btn.classList.toggle(c, yes));
+                inactive.forEach(c => btn.classList.toggle(c, !yes));
             };
+            setActive(showImagesBtn, !show3D);
+            setActive(show3DBtn, show3D);
+        }
 
-            window.toggleAccordion = function(button) {
-                const currentItem = button.parentElement;
-                const container = document.getElementById('accordion-container');
-                const allItems = container.querySelectorAll('.accordion-item');
-                const isCurrentlyActive = currentItem.classList.contains('active');
-                allItems.forEach(item => item.classList.remove('active'));
-                if (!isCurrentlyActive) currentItem.classList.add('active');
-            };
+        function resize3D() {
+            if (!renderer || !camera) return;
+            const width = stlCanvas.clientWidth || 600;
+            const height = stlCanvas.clientHeight || 480;
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+            renderer.setSize(width, height, false);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        }
 
-            let currentSlide = 0;
-            const totalSlides = 3; 
-            const slides = document.querySelectorAll('.slide-content');
-            const indicators = document.querySelectorAll('.indicator');
+        function resetView() {
+            if (!controls || !baseCameraPosition) return;
+            camera.position.copy(baseCameraPosition);
+            controls.target.set(0, 0, 0);
+            controls.update();
+        }
 
-            window.updateSlider = function() {
-                slides.forEach((slide, index) => {
-                    if (index === currentSlide) slide.classList.add('active');
-                    else slide.classList.remove('active');
-                });
-                indicators.forEach((dot, index) => {
-                    if (index === currentSlide) {
-                        dot.classList.replace('bg-white/30', 'bg-km-accent');
-                        dot.classList.add('w-4'); 
-                    } else {
-                        dot.classList.replace('bg-km-accent', 'bg-white/30');
-                        dot.classList.remove('w-4');
-                    }
-                });
-            };
-            window.nextSlide = function() { currentSlide = (currentSlide + 1) % totalSlides; updateSlider(); };
-            window.prevSlide = function() { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateSlider(); };
-            window.goToSlide = function(index) { currentSlide = index; updateSlider(); };
-            updateSlider();
-            setInterval(nextSlide, 8000); 
-
-            const scrollTopBtn = document.getElementById('scrollTopBtn');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) {
-                    scrollTopBtn.classList.remove('opacity-0', 'invisible');
-                } else {
-                    scrollTopBtn.classList.add('opacity-0', 'invisible');
-                }
-            });
-            window.scrollToTop = function() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-
-            window.toggleTheme = function() {
-                document.body.classList.toggle('dark-theme');
-                const sunIcon = document.getElementById('sunIcon');
-                const moonIcon = document.getElementById('moonIcon');
-                if (document.body.classList.contains('dark-theme')) {
-                    sunIcon.classList.add('hidden');
-                    moonIcon.classList.remove('hidden');
-                } else {
-                    sunIcon.classList.remove('hidden');
-                    moonIcon.classList.add('hidden');
-                }
+        function init3D() {
+            if (initialized) {
+                resize3D();
+                return;
             }
+            initialized = true;
 
-            let isEnglish = false;
-            window.toggleLanguage = function() {
-                const combo = document.querySelector('.goog-te-combo');
-                if (combo) {
-                    isEnglish = !isEnglish;
-                    combo.value = isEnglish ? 'en' : 'vi';
-                    combo.dispatchEvent(new Event('change'));
-                    document.getElementById('langBtn').innerText = isEnglish ? 'VI' : 'EN';
-                } else {
-                    alert('Hệ thống dịch đang tải, vui lòng bấm lại sau vài giây!');
+            scene = new THREE.Scene();
+            scene.background = null;
+
+            camera = new THREE.PerspectiveCamera(38, 1, 0.01, 10000);
+            camera.position.set(1.35, 0.9, 2.65);
+            baseCameraPosition = camera.position.clone();
+
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+            renderer.outputColorSpace = THREE.SRGBColorSpace;
+            renderer.toneMapping = THREE.ACESFilmicToneMapping;
+            renderer.toneMappingExposure = 1.15;
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            stlCanvas.appendChild(renderer.domElement);
+
+            controls = new OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.06;
+            controls.minDistance = 0.45;
+            controls.maxDistance = 8;
+            controls.autoRotate = true;
+            controls.autoRotateSpeed = 0.9;
+            controls.target.set(0, 0, 0);
+
+            const hemi = new THREE.HemisphereLight(0xfff7df, 0x120b07, 2.2);
+            scene.add(hemi);
+
+            const key = new THREE.DirectionalLight(0xffedb1, 4.5);
+            key.position.set(3, 4, 5);
+            key.castShadow = true;
+            scene.add(key);
+
+            const fill = new THREE.DirectionalLight(0xffc85b, 2.5);
+            fill.position.set(-4, 1, 2);
+            scene.add(fill);
+
+            const rim = new THREE.PointLight(0xd4af37, 90, 8, 2);
+            rim.position.set(0, -1, -3);
+            scene.add(rim);
+
+            const loader = new STLLoader();
+            loader.load(
+                './ran-nghenh-tan.stl',
+                geometry => {
+                    geometry.computeVertexNormals();
+                    geometry.computeBoundingBox();
+                    geometry.center();
+
+                    const box = geometry.boundingBox;
+                    const size = new THREE.Vector3();
+                    box.getSize(size);
+                    const maxAxis = Math.max(size.x, size.y, size.z);
+                    const scale = 2.8 / maxAxis;
+                    geometry.scale(scale, scale, scale);
+                    geometry.computeBoundingSphere();
+
+                    const material = new THREE.MeshPhysicalMaterial({
+                        color: 0xd4af37,
+                        metalness: 0.92,
+                        roughness: 0.24,
+                        clearcoat: 0.35,
+                        clearcoatRoughness: 0.15
+                    });
+
+                    model = new THREE.Mesh(geometry, material);
+                    model.castShadow = true;
+                    model.receiveShadow = true;
+
+                    // Keep the imported STL's own orientation; only center and normalize the size.
+                    scene.add(model);
+
+                    controls.target.set(0, 0, 0);
+                    controls.update();
+                    stlLoading.classList.add('hidden');
+                    resize3D();
+                    animate();
+                },
+                undefined,
+                error => {
+                    console.error('Không thể tải STL:', error);
+                    stlLoading.innerHTML = `
+                        <div class="text-center px-6">
+                            <p class="text-red-300 text-sm">Không tải được mô hình 3D.</p>
+                            <p class="text-brand-gold-light/50 text-[10px] mt-2 leading-relaxed">
+                                Hãy chạy website qua <b>http://</b> hoặc <b>https://</b>, không mở trực tiếp bằng <b>file://</b>.
+                                Đảm bảo <b>ran-nghenh-tan.stl</b> nằm cùng thư mục với <b>index.html</b>.
+                            </p>
+                        </div>`;
                 }
-            }
+            );
+
+            renderer.domElement.addEventListener('dblclick', resetView);
+            window.addEventListener('resize', resize3D);
+        }
+
+        function animate() {
+            animationFrame = requestAnimationFrame(animate);
+            if (controls) controls.update();
+            if (renderer) renderer.render(scene, camera);
+        }
+
+        show3DBtn.addEventListener('click', () => {
+            mainImageWrap.classList.add('hidden');
+            stlViewer.classList.remove('hidden');
+            updateTabStyles(true);
+            init3D();
+            requestAnimationFrame(resize3D);
+        });
+
+        showImagesBtn.addEventListener('click', () => {
+            stlViewer.classList.add('hidden');
+            mainImageWrap.classList.remove('hidden');
+            updateTabStyles(false);
+            if (controls) controls.autoRotate = false;
+        });
+
+        // Re-enable a gentle auto-rotate next time the 3D view is opened.
+        show3DBtn.addEventListener('click', () => {
+            if (controls) controls.autoRotate = true;
         });
     </script>
 </body>
